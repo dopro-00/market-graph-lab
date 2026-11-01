@@ -4,79 +4,108 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#F3EFF9">
-<meta name="description" content="선택을 점으로, 점을 시장으로. 교사가 함께 그리는 중학교 사회 4차시 경제 그래프 실험실.">
+<meta name="description" content="선택을 점으로, 점을 시장으로. 수요곡선 만들기, 공급곡선 만들기, 시장 균형 확인하기로 이어지는 중학교 사회 경제 그래프 실험실.">
 <link rel="icon" href="data:,">
 <title>경제 그래프 실험실 · 선택을 점으로, 점을 시장으로</title>
+<link rel="preload" href="assets/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{--bg:#F3EFF9;--panel:#FFFCFF;--ink:#30243C;--purple:#6B4C93;--accent:#F07870;--paper:#FFF5D8;--line:#D9CFE4;--muted:#655771;--soft:#EAE1F3;--d:#216BA5;--s:#A43D70;--good:#22654E}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;line-height:1.5}button,input,select{font:inherit;color:inherit}button{cursor:pointer;touch-action:manipulation}button:disabled{cursor:default;opacity:.45}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,svg[tabindex]:focus-visible{outline:4px solid var(--purple);outline-offset:3px}button{border:1px solid var(--line);border-radius:10px;background:var(--panel);font-weight:700}h1,h2,h3,p{margin:0}svg{display:block}a{color:var(--d)}[hidden]{display:none!important}.app{max-width:1660px;margin:auto;padding:0 28px;height:100svh;min-height:710px;display:flex;flex-direction:column}.header{height:58px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:16px}.brand{display:flex;align-items:center;gap:12px;font-size:23px;font-weight:800;letter-spacing:-1px}.brandmark{width:36px;height:36px;border-radius:10px;background:var(--purple);color:white;display:grid;place-items:center}.brand small{font-size:17px;color:var(--muted);font-weight:400;letter-spacing:0}.tools{display:flex;gap:10px}.tool{font-size:18px;padding:7px 14px;min-height:42px}.sessions{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:12px 0 4px}.session{text-align:left;padding:8px 14px;font-size:20px;background:transparent;border-color:transparent;display:flex;align-items:center;gap:12px;white-space:nowrap}.session b{font-size:16px;border:1px solid var(--line);border-radius:20px;min-width:54px;text-align:center;padding:2px 6px}.session[aria-current=true]{background:var(--soft);color:var(--purple)}.session[aria-current=true] b{background:var(--purple);color:white;border-color:var(--purple)}.scenes{display:flex;gap:8px;min-height:40px;align-items:center}.scene{font-size:18px;padding:5px 12px;color:var(--muted);background:transparent;border-color:transparent}.scene[aria-current=step]{color:var(--purple);border-bottom:3px solid var(--purple);border-radius:0;font-weight:800}.scene:before{content:'·';margin-right:8px}.scene[aria-current=step]:before{content:'●';font-size:12px}main{flex:1;min-height:0;display:flex;flex-direction:column}.question{padding:8px 0 14px;flex-shrink:0}.question h1{font-size:36px;line-height:1.3;letter-spacing:-1.3px;word-break:keep-all}.question p{font-size:22px;color:var(--muted);margin-top:6px;word-break:keep-all}.stage{flex:1;min-height:0;background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:16px 22px;display:flex;flex-direction:column;gap:10px}.workspace{display:grid;grid-template-columns:340px minmax(0,1fr);gap:24px;flex:1;min-height:0}.rail{display:flex;flex-direction:column;gap:10px;min-height:0}.rail h2{font-size:26px;line-height:1.3}.rail p{font-size:22px;word-break:keep-all}.small{font-size:18px!important;color:var(--muted)}.rail .small{line-height:1.4}.tag{font-size:17px;background:var(--soft);padding:3px 9px;border-radius:6px;align-self:flex-start;color:var(--purple);font-weight:700}.tag.d{background:#E7F1F9;color:var(--d)}.tag.s{background:#F8EAF0;color:var(--s)}.rail-actions{display:flex;gap:8px;flex-wrap:wrap}.rail-actions button{min-height:46px;padding:7px 12px;font-size:18px;flex:1;white-space:nowrap}.selected{background:var(--soft)!important;border-color:var(--purple)!important}.control{display:flex;align-items:center;gap:12px}.control button{width:50px;height:50px;font-size:28px;flex-shrink:0}.control strong{font-size:34px;min-width:162px;text-align:center;font-variant-numeric:tabular-nums;line-height:1.2}.number-entry{display:flex;gap:10px;align-items:center;font-size:22px}.number-entry input{font-size:30px;font-weight:800;width:105px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:white}.number-entry button{padding:8px 14px;min-height:52px;font-size:21px}.primary{background:var(--accent);border-color:var(--accent)}.next{background:var(--purple);border-color:var(--purple);color:white}.source-label{display:flex;align-items:center;gap:10px;font-size:19px;color:var(--muted)}.source-label strong{color:var(--ink)}.graph-area{display:flex;flex-direction:column;min-height:0;position:relative}.graph-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:19px;min-height:28px}.legend{display:flex;gap:16px;flex-wrap:wrap}.legend span{display:flex;align-items:center;gap:7px;font-size:19px;font-weight:700}.swatch{width:26px;border-top:4px solid var(--d)}.swatch.s{border-color:var(--s)}.swatch.old{border-color:#877B95;border-top-style:dashed}.graph-wrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}.graph-wrap>svg{width:100%;height:100%;overflow:visible}.plot-target{cursor:crosshair}.graph-label{font-size:33px;font-weight:700;fill:var(--ink)}.tick{font-size:31px;fill:var(--muted)}.grid{stroke:#E6DEEE;stroke-width:1}.axis{stroke:var(--ink);stroke-width:2.2}.curve{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.curve.d{stroke:var(--d)}.curve.s{stroke:var(--s)}.curve.old{stroke:#877B95;stroke-width:3;stroke-dasharray:10 8}.dot{stroke:white;stroke-width:3}.coord-guide{fill:none;stroke:var(--purple);stroke-width:2;stroke-dasharray:6 5}.feedback{min-height:52px;border-radius:12px;background:var(--soft);font-size:23px;padding:8px 16px;display:flex;align-items:center;justify-content:center;text-align:center;word-break:keep-all;flex-shrink:0}.feedback.wait{background:#F6F2FA;color:var(--muted)}.feedback.warning{background:var(--paper)}.feedback strong{color:var(--purple)}.footer{display:flex;gap:12px;align-items:center;min-height:82px;padding:12px 0;flex-shrink:0}.btn{min-height:54px;padding:10px 20px;font-size:21px;white-space:nowrap}.footer .spacer{flex:1}.counter{min-width:72px;font-size:17px;color:var(--muted)}.footer-note{font-size:17px;color:var(--muted);max-width:250px}.table{border-collapse:collapse;width:100%;font-size:23px;text-align:center;table-layout:fixed;font-variant-numeric:tabular-nums}.table th{font-size:19px;color:var(--muted);font-weight:700;padding:7px 4px;border-bottom:2px solid var(--line)}.table td{padding:0;border-bottom:1px solid var(--line);height:41px}.table tr.active{background:var(--soft)}.table td button{display:block;width:100%;padding:4px 8px;border:0;background:transparent;border-radius:0;font-size:23px;font-weight:400}.table td .marked{font-weight:800;color:var(--purple)}.table td.new{color:var(--d);font-weight:800}.table.s td.new{color:var(--s)}.wide-table{max-width:720px;font-size:28px}.wide-table th{font-size:23px}.wide-table td{height:51px}.wide-table td button{font-size:28px}.survey-right{display:flex;align-items:center;justify-content:center;gap:36px}.ice-art{width:130px;flex-shrink:0;color:var(--purple)}.empty-count{font-size:26px;text-align:center;color:var(--muted);padding:20px}.notice{background:var(--paper);border-radius:10px;padding:10px 12px;font-size:19px!important}.market-numbers{display:flex;gap:12px}.metric{padding:8px 12px;background:#E7F1F9;border-radius:10px;flex:1}.metric.s{background:#F8EAF0}.metric span{font-size:18px;display:block}.metric b{font-size:30px;font-variant-numeric:tabular-nums}.situation{background:var(--paper);padding:12px 14px;border-radius:12px;font-size:23px}.picks{display:flex;gap:8px}.picks button{min-height:46px;padding:7px 10px;font-size:19px;flex:1}.caption{font-size:18px;color:var(--muted)}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:12px}.comparison>div{border:1px solid var(--line);border-radius:10px;padding:10px 12px}.comparison span{font-size:18px;display:block;color:var(--muted)}.comparison strong{font-size:26px;display:block}.trace{display:flex;align-items:center;gap:10px;background:var(--paper);padding:8px 12px;border-radius:10px;font-size:20px}.trace strong{font-size:26px}.scenario-select{width:100%;min-height:48px;font-size:21px;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:8px}.progress{font-size:18px;color:var(--muted)}.candidate{font-size:20px!important;background:var(--paper);border-radius:8px;padding:7px 10px}.hint-buttons button[aria-pressed=true]{background:var(--soft);border-color:var(--purple)}dialog{border:1px solid var(--line);border-radius:22px;background:var(--panel);color:var(--ink);width:min(880px,92vw);max-height:88svh;padding:28px 32px;box-shadow:0 20px 80px #30243C30}dialog::backdrop{background:#30243C66}dialog h2{font-size:30px}dialog h3{font-size:24px;margin:22px 0 8px}dialog p,dialog li{font-size:20px;line-height:1.65}dialog ul{padding-left:24px}dialog .table{font-size:20px}dialog .table td{padding:8px}.dialog-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;justify-content:flex-end}.dialog-actions .btn{font-size:19px}.sr-only{position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.export-status{font-size:18px;color:var(--good);margin-top:12px}.intro-strip{font-size:18px;color:var(--muted);border-top:1px solid var(--line);padding-top:6px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.preview-box{font-size:22px;padding:12px;background:var(--paper);border-radius:12px}.practice-options{display:flex;gap:8px;flex-wrap:wrap}.practice-options button{padding:8px 12px;min-height:48px;font-size:20px}.endnote{font-size:22px;text-align:center;background:var(--paper);padding:16px;border-radius:12px}.print-only{display:none}
-@media(min-width:1101px) and (min-height:900px){.app{padding:0 40px}.header{height:70px}.sessions{padding-top:16px}.session{font-size:23px;padding:12px 18px}.scenes{min-height:50px}.scene{font-size:21px}.question{padding:14px 0 20px}.question h1{font-size:42px}.question p{font-size:26px}.stage{padding:24px 28px;gap:16px}.workspace{grid-template-columns:380px minmax(0,1fr);gap:32px}.rail{gap:16px}.rail p{font-size:25px}.table{font-size:27px}.table td{height:53px}.table td button{font-size:27px}.table th{font-size:22px}.feedback{font-size:27px;min-height:64px}.footer{min-height:98px}.btn{font-size:24px;min-height:60px}.rail-actions button{font-size:21px;min-height:52px}}
-@media(min-width:1101px) and (max-height:739px){.app{min-height:680px}.header{height:48px}.sessions{padding-top:8px}.session{padding:6px 14px}.scenes{min-height:34px}.question{padding:4px 0 10px}.footer{min-height:74px;padding:8px 0}.stage{padding:12px 18px}}
-@media(max-width:1100px){.app{height:auto;min-height:100svh;padding:0 18px}.brand small{display:none}.sessions{gap:6px}.session{font-size:18px;white-space:normal;gap:6px;padding:8px}.session b{min-width:44px;font-size:14px}.question h1{font-size:32px}.question p{font-size:22px}.stage{min-height:570px}.workspace{grid-template-columns:290px minmax(0,1fr);min-height:420px;gap:16px}.graph-wrap{min-height:370px}.rail{gap:8px}.rail p{font-size:20px}.table{font-size:22px}.table td button{font-size:22px}.footer{flex-wrap:wrap}.footer-note{display:none}.survey-right{gap:10px}.ice-art{width:80px}.wide-table td button{font-size:24px}}
-@media(max-width:740px){.header{height:62px}.brand{font-size:20px}.tools{gap:6px}.tool{font-size:16px;padding:7px 9px}.sessions{grid-template-columns:1fr 1fr}.scenes{flex-wrap:wrap;padding:8px 0}.scene{font-size:17px}.question h1{font-size:29px}.stage{padding:16px;min-height:650px}.workspace{display:flex;flex-direction:column;gap:18px}.rail{gap:12px}.rail-actions button{flex:initial}.graph-area{min-height:340px}.graph-wrap{min-height:300px}.survey-right{min-height:300px}.feedback{font-size:21px;min-height:64px}.footer{gap:8px}.btn{font-size:18px;padding:9px 13px;min-height:48px}.counter{min-width:54px}.footer .spacer{display:none}.guide-grid{grid-template-columns:1fr}.control{justify-content:flex-start}.wide-table{font-size:24px}.ice-art{display:none}}
-@media(min-width:1101px) and (max-height:880px){.rail{gap:8px}.table td{height:36px}.table th{padding:5px 2px;font-size:18px;line-height:1.2}.table td button{font-size:23px;line-height:1.2;padding:2px 5px}.rail-actions{gap:6px}.rail-actions button{font-size:17px;padding:6px 8px;min-height:42px}.tag{font-size:16px}.scenario-select{font-size:19px;min-height:44px;padding:6px}.rail .small{font-size:17px!important}.situation{font-size:21px;padding:8px 12px}.feedback{font-size:21px}.metric{padding:6px 10px}.metric b{font-size:28px}.metric span{font-size:17px}.picks button{min-height:42px;font-size:18px}.comparison strong{font-size:24px}.comparison>div{padding:6px 10px}}
+@font-face{font-family:Pretendard;src:url('assets/fonts/PretendardVariable.woff2') format('woff2');font-weight:45 920;font-style:normal;font-display:swap}
+:root{--bg:#fff;--panel:#fff;--ink:#172238;--purple:#2458ED;--accent:#2458ED;--paper:#FFF7E8;--line:#DFE4EC;--muted:#5D6A80;--soft:#EEF3FF;--d:#2458ED;--s:#B95032;--good:#147064}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;font-size:18px;line-height:1.5;letter-spacing:-.02em;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer;touch-action:manipulation;border:1px solid var(--line);border-radius:8px;background:var(--panel);font-weight:600;transition:background-color .15s,border-color .15s,color .15s}button:hover:not(:disabled){background:#F5F7FA;border-color:#B7C2D5}button:disabled{cursor:default;opacity:.45}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,svg[tabindex]:focus-visible{outline:3px solid var(--purple);outline-offset:4px}h1,h2,h3,p{margin:0}h1,h2,h3,strong,b{font-weight:650}svg{display:block}a{color:var(--d)}[hidden]{display:none!important}input,select{background:#fff;border:1px solid var(--line);border-radius:8px}input{font-variant-numeric:tabular-nums}
+.app{max-width:1800px;margin:auto;padding:0 32px 18px;height:100svh;min-height:740px;display:flex;flex-direction:column;gap:20px}
+.header{min-height:86px;flex-shrink:0;display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;font-size:26px;font-weight:750;letter-spacing:-1px;white-space:nowrap}.brandmark,.brand small{display:none}.tools{display:flex;gap:8px}.tool{font-size:16px;padding:9px 12px;min-height:44px;white-space:nowrap}
+.sessions{display:flex;align-self:stretch;align-items:stretch;gap:12px;margin-left:auto}.session{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 8px;font-size:17px;white-space:nowrap;border:0;border-radius:0;background:transparent;color:var(--muted)}.session b{display:grid;place-items:center;min-width:32px;height:32px;font-size:17px;font-weight:550;border:1px solid var(--line);border-radius:50%;color:var(--muted)}.session[aria-current=true]{color:var(--purple)}.session[aria-current=true]:after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:3px;background:var(--purple)}.session[aria-current=true] b{background:var(--purple);color:white;border-color:var(--purple)}.session:hover:not(:disabled){background:var(--soft);color:var(--purple)}
+main{display:flex;flex-direction:column;gap:18px;flex:1;min-height:0}.question{flex-shrink:0}.question h1{font-size:clamp(30px,2.8vw,46px);font-weight:700;line-height:1.3;letter-spacing:-.045em;word-break:keep-all}.question p{font-size:20px;color:var(--muted);margin-top:8px;word-break:keep-all}.scenes{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}.scene{font-size:19px;min-height:46px;padding:8px 16px;color:var(--muted)}.scene[aria-current=step]{color:#fff;background:var(--purple);border-color:var(--purple)}.scene[aria-current=step]:hover{background:#1747D5}
+.workflow{display:flex;list-style:none;gap:20px;padding:0;margin:0;min-height:42px;align-items:center;flex-shrink:0}.workflow li{display:flex;align-items:center;gap:12px;flex:1;color:var(--muted);font-size:19px;font-weight:550;white-space:nowrap}.workflow li:not(:last-child):after{content:'';height:2px;background:var(--line);flex:1;margin-left:8px}.workflow b{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);border-radius:50%;font-size:18px;flex-shrink:0}.workflow .current,.workflow .complete{color:var(--purple)}.workflow .current b,.workflow .complete b{color:#fff;background:var(--purple);border-color:var(--purple)}.workflow .complete:after{background:var(--purple)}
+.activity-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px;flex:1;min-height:0}.activity-layout.plot-layout,.activity-layout.survey-layout{grid-template-columns:1fr}.control-content{min-height:0;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:22px;background:#F8FAFD}.control-content:empty{display:none}.stage{display:flex;flex-direction:column;gap:14px;flex:1;min-height:0;min-width:0}.workspace{display:flex;flex-direction:column;gap:16px;flex:1;min-height:0}.rail{display:flex;flex-direction:column;gap:18px;min-height:0}.rail h2,.control-content h2{font-size:24px;line-height:1.3}.rail p{font-size:21px;word-break:keep-all}.small{font-size:18px!important;color:var(--muted)}.rail .small{line-height:1.5}.tag{font-size:18px;color:var(--muted);font-weight:550;align-self:flex-start}.tag.d{color:var(--d)}.tag.s{color:var(--s)}.rail-actions{display:flex;flex-wrap:wrap;gap:8px}.rail-actions button{min-height:44px;padding:8px 12px;font-size:18px;flex:1;white-space:nowrap}.primary,.next{background:var(--purple);border-color:var(--purple);color:#fff}.primary:hover:not(:disabled),.next:hover:not(:disabled),.footer #actionBtn:hover:not(:disabled){background:#1747D5;border-color:#1747D5}.selected,.hint-buttons button[aria-pressed=true]{background:var(--soft)!important;border-color:var(--purple)!important;color:var(--purple)}
+.control{display:flex;align-items:center;justify-content:space-between;gap:12px}.control button{width:46px;height:48px;font-size:28px;font-weight:400;flex-shrink:0}.control strong{font-size:30px;font-weight:650;text-align:center;font-variant-numeric:tabular-nums;line-height:1.2;white-space:nowrap}.number-entry{display:flex;gap:10px;align-items:center;font-size:22px}.number-entry input{font-size:30px;width:105px;padding:6px 10px}.number-entry button{padding:8px 14px;min-height:52px;font-size:21px}
+.source-strip{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.source-label{display:flex;align-items:center;gap:10px;font-size:19px;color:var(--muted)}.visual-layout{display:flex;flex:1;min-height:0;gap:24px}.visual-layout.has-reading{display:grid;grid-template-columns:160px minmax(0,1fr)}.reading-panel{display:flex;flex-direction:column;justify-content:center;gap:16px;min-width:0}.reading-panel .market-numbers{flex-direction:column}.reading-panel .comparison{grid-template-columns:1fr}.reading-panel .metric{padding:8px 12px}.reading-panel .situation{padding:8px 12px;font-size:20px}.reading-panel p{font-size:20px}.visual-layout>.graph-area,.visual-layout>.survey-right,.visual-layout>.summary-material{min-width:0;flex:1}.summary-material{display:flex;flex-direction:column;gap:24px;justify-content:center}
+.graph-area{display:flex;flex-direction:column;min-height:0;min-width:0;position:relative;gap:12px}.graph-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:19px;min-height:28px}.legend{display:flex;gap:20px;flex-wrap:wrap}.legend span{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:550}.swatch{width:26px;border-top:4px solid var(--d)}.swatch.s{border-color:var(--s)}.swatch.old{border-color:#8A96A8;border-top-style:dashed}.graph-wrap{display:flex;align-items:center;justify-content:center;flex:1;min-width:0;min-height:0}.graph-wrap>svg{width:100%;height:100%;overflow:visible;font-family:inherit}.plot-target{cursor:crosshair}.graph-label{font-size:30px;font-weight:600;fill:var(--ink)}.tick{font-size:28px;fill:var(--muted);font-variant-numeric:tabular-nums}.grid{stroke:#E9EDF3;stroke-width:1}.axis{stroke:var(--ink);stroke-width:2}.curve{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.curve.d{stroke:var(--d)}.curve.s{stroke:var(--s)}.curve.old{stroke:#8A96A8;stroke-width:3;stroke-dasharray:10 8}.dot{stroke:#fff;stroke-width:3}.coord-guide{fill:none;stroke:var(--purple);stroke-width:2;stroke-dasharray:6 5}
+.table{border-collapse:collapse;width:100%;font-size:26px;text-align:center;table-layout:fixed;font-variant-numeric:tabular-nums}.table th{font-size:19px;color:var(--muted);font-weight:550;padding:12px 6px;border-bottom:1px solid #BFC9D9}.table td{height:56px;padding:0;border-bottom:1px solid var(--line);font-weight:450}.table td button{display:block;width:100%;min-height:48px;padding:8px;border:0;border-radius:0;background:transparent;font-size:26px;font-weight:450}.table tr[data-row]{cursor:pointer}.table tr[data-row]:hover{background:#F5F7FA}.table tr.active{background:var(--soft)}.table .price-edit{color:var(--purple);text-decoration:underline;text-decoration-color:#BDCBF9;text-underline-offset:5px}.table tr.active button,.table td .marked{font-weight:650;color:var(--purple)}.table td.new{color:var(--d);font-weight:650}.table.s td.new{color:var(--s)}.wide-table{max-width:720px;font-size:28px}.wide-table th{font-size:21px}.wide-table td,.wide-table td button{height:60px;font-size:28px}.row-state{display:inline-block;width:24px;margin-right:4px;color:var(--purple);font-size:20px}
+.app:has(.plot-workspace){height:auto;min-height:100svh}.app:has(.plot-workspace) .footer{position:sticky;bottom:0;z-index:2;padding-bottom:12px}.plot-workspace{min-height:420px;display:grid;grid-template-columns:minmax(300px,.38fr) minmax(0,.62fr);gap:16px;flex:1;min-height:0}.plot-workspace>.rail,.plot-workspace>.graph-area{border:1px solid var(--line);border-radius:12px;padding:22px;background:#fff;min-height:0}.plot-workspace>.rail{gap:18px}.plot-workspace .graph-wrap{position:relative;height:260px}.plot-workspace .graph-wrap>svg{position:absolute;inset:0}.plot-workspace h2{font-size:24px;line-height:1.4}.plot-workspace .table{flex:0}.plot-workspace .table th{height:48px}.plot-workspace .table td,.plot-workspace .table td button{height:64px;font-size:28px}.plot-workspace .table tr.active td:first-child{box-shadow:inset 3px 0 var(--purple)}.scenario-line{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line);font-size:21px;font-weight:550;color:var(--muted)}.plot-graph-heading{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}.plot-graph-heading h2{font-size:22px}.plot-graph-header{min-height:44px;flex-shrink:0}.plot-graph-header h2{font-size:20px;white-space:nowrap;color:var(--ink)}.plot-coordinate-slot{min-height:40px;display:flex;justify-content:flex-end}.hint-buttons{gap:8px}.hint-buttons button{min-height:40px;font-size:16px;flex:initial;padding:6px 10px}.text-button{border:0;background:transparent;font-size:18px;color:var(--purple);padding:8px;white-space:nowrap;min-height:44px}.coordinate-alternative{align-self:flex-end;font-size:17px;padding:6px 10px;min-height:40px;color:var(--muted)}.plot-workspace .graph-label{font-size:28px}.plot-workspace .tick{font-size:27px}
+.feedback{scroll-margin-bottom:96px;min-height:48px;border-radius:8px;background:var(--soft);font-size:21px;padding:10px 16px;display:flex;align-items:center;justify-content:center;text-align:center;word-break:keep-all;flex-shrink:0}.feedback.wait{background:#F5F7FA;color:var(--muted)}.feedback.warning{background:var(--paper)}.feedback strong{color:var(--purple)}.plot-feedback:empty{display:none}
+.footer{display:flex;align-items:center;gap:12px;min-height:82px;padding:14px 0 0;flex-shrink:0;border-top:1px solid var(--line);background:var(--panel)}.btn{min-height:52px;padding:11px 20px;font-size:20px;white-space:nowrap}.action-status{display:flex;align-items:center;gap:16px;font-size:20px;margin-right:auto;min-width:0}.action-status:empty{display:none}.action-status strong{font-size:30px;color:var(--purple);line-height:1.3}.footer #actionBtn{background:var(--purple);border-color:var(--purple);color:#fff;font-size:23px;min-width:280px;margin-left:auto}.footer #actionBtn:disabled{background:#E8EDF5;border-color:#E8EDF5;color:#5D6A80;opacity:1}.footer #nextBtn{color:var(--purple)}.footer #prevBtn{font-size:17px;padding:8px 12px}.footer .quiet{border:0;background:transparent;font-size:16px;color:var(--muted);padding:8px;min-height:44px}.footer .spacer{flex:1}.counter,.footer-note{font-size:17px;color:var(--muted)}
+.survey-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}.survey-toolbar .tag{margin-right:auto}.survey-toolbar .text-button{border:1px solid var(--line);padding:8px 14px}.survey-table-wrap{width:min(940px,100%);margin:auto;min-height:0}.survey-table-wrap .table{font-size:32px}.survey-table-wrap .table th{font-size:21px}.survey-table-wrap .table td,.survey-table-wrap .table td button{height:68px;font-size:32px}.survey-right{display:flex;align-items:center;justify-content:center;gap:24px;flex:1}.ice-art{display:none}.empty-count{font-size:26px;text-align:center;color:var(--muted);padding:20px}
+.market-numbers{display:flex;gap:12px}.metric{padding:12px 14px;background:var(--soft);border-radius:8px;flex:1}.metric.s{background:#FCF0EB}.metric span{font-size:18px;display:block;color:var(--muted)}.metric b{font-size:30px;font-weight:650;font-variant-numeric:tabular-nums;color:var(--d)}.metric.s b{color:var(--s)}.situation,.notice,.preview-box,.endnote,.candidate{background:var(--paper);padding:12px 14px;border-radius:8px;font-size:21px}.notice{font-size:19px!important}.picks{display:flex;gap:8px;flex-wrap:wrap}.picks button{min-height:46px;padding:8px 10px;font-size:18px;flex:1}.caption,.progress{font-size:18px;color:var(--muted)}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:12px}.comparison>div{border:1px solid var(--line);border-radius:8px;padding:12px}.comparison span{font-size:18px;display:block;color:var(--muted)}.comparison strong{font-size:26px;display:block}.trace{display:flex;align-items:center;gap:10px;background:var(--paper);padding:10px 12px;border-radius:8px;font-size:20px}.trace strong{font-size:26px}.scenario-select{width:100%;min-height:48px;font-size:20px;padding:8px}.scenario-choices{display:flex;flex-direction:column;gap:12px}.scenario-choices button{font-size:22px;text-align:left;padding:18px;min-height:76px;line-height:1.5}.scenario-choices button[aria-pressed=true]{background:var(--soft);border-color:var(--purple);color:var(--purple)}.scenario-choices button small{display:block;font-size:19px;font-weight:400;color:var(--muted);margin-top:6px}.scenario-picker .scenario-choices{margin-top:20px}.scenario-picker p{margin-top:12px}.row-picker-label{font-size:18px;font-weight:600}.scenario-retry-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px}.scenario-retry-buttons button{min-height:48px;padding:8px;font-size:18px}
+dialog{border:1px solid var(--line);border-radius:16px;background:var(--panel);color:var(--ink);width:min(880px,92vw);max-height:90svh;padding:32px;box-shadow:0 24px 80px #1722381A}dialog::backdrop{background:#17223833}dialog h2{font-size:30px;font-weight:700;letter-spacing:-.035em}dialog h3{font-size:24px;margin:24px 0 8px}dialog p,dialog li{font-size:20px;line-height:1.65}dialog ul{padding-left:24px}dialog .table{font-size:20px}dialog .table td{padding:8px}.dialog-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;justify-content:flex-end}.dialog-actions .btn{font-size:19px}.export-status{font-size:18px;color:var(--good);margin-top:12px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.practice-options{display:flex;gap:8px;flex-wrap:wrap}.practice-options button{padding:8px 12px;min-height:48px;font-size:20px}.intro-strip{font-size:18px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}.endnote{text-align:center}.sr-only{position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.print-only{display:none}
+.survey-modal{width:min(750px,94vw);padding:30px 38px 34px;max-height:92svh;overflow:auto}.survey-modal form{display:flex;flex-direction:column;gap:26px}.survey-modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:24px}.survey-modal-step{font-size:20px;font-weight:500;white-space:nowrap}.survey-size{display:flex;align-items:center;gap:8px;font-size:19px}.survey-size input{width:80px;padding:8px 10px;font-size:22px}.survey-modal-head .text-button{font-size:19px;color:var(--muted);padding:8px 0 8px 12px}.survey-prompt{text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;padding-top:14px}.survey-product{font-size:30px;font-weight:600;line-height:1.4}.survey-price{font-size:104px;line-height:1.1;font-weight:720;letter-spacing:-.055em;color:var(--purple);font-variant-numeric:tabular-nums}.survey-price-ending{display:block;font-size:30px;font-weight:550;letter-spacing:-.025em;white-space:nowrap;line-height:1.5;color:var(--ink);margin-top:12px}.survey-modal h2{font-size:44px;line-height:1.35;font-weight:700;word-break:keep-all}.survey-response{display:flex;align-items:center;justify-content:center;gap:16px;font-size:30px;font-weight:600}.survey-response input{width:280px;height:94px;padding:10px 16px;text-align:center;font-size:52px;font-weight:600;border:1px solid #AAB8D0;border-radius:10px}.survey-response input:focus{outline:2px solid var(--purple);outline-offset:3px;border-color:var(--purple)}.survey-modal-actions{display:flex;gap:14px;margin-top:12px}.survey-modal-actions .btn{font-size:21px;flex:1;min-height:64px;padding:14px}.survey-modal-actions .primary{flex:1.2}
+@media(max-width:1199px){.app{padding:0 24px 16px;gap:16px}.header{flex-wrap:wrap;gap:10px;min-height:112px;padding-top:10px}.brand{margin-right:auto;font-size:25px}.sessions{order:3;flex-basis:100%;margin:0;gap:14px}.session{flex:1;padding:10px 8px;font-size:18px}.question h1{font-size:34px}.plot-workspace{grid-template-columns:minmax(270px,.38fr) minmax(0,.62fr)}.plot-workspace>.rail,.plot-workspace>.graph-area{padding:18px}.footer #actionBtn{font-size:21px;min-width:220px}.plot-workspace .table td,.plot-workspace .table td button{height:56px;font-size:26px}}
+@media(max-height:800px) and (min-width:761px){.app{gap:12px;min-height:690px}main{gap:12px}.header{min-height:72px}.question h1{font-size:32px}.question p{font-size:18px;margin-top:4px}.scene{font-size:18px;min-height:40px;padding:6px 14px}.workflow{min-height:36px}.workflow li{font-size:17px}.workflow b{width:30px;height:30px;font-size:17px}.plot-workspace>.rail,.plot-workspace>.graph-area{padding:14px}.plot-workspace{min-height:380px}.plot-workspace>.rail{gap:8px}.plot-workspace .table th{height:32px;padding:4px;font-size:18px}.plot-workspace .table td,.plot-workspace .table td button{height:44px;min-height:44px;font-size:24px;padding:4px}.scenario-line{font-size:19px;padding-bottom:8px}.hint-buttons button{font-size:15px;min-height:36px}.plot-workspace h2{font-size:21px}.footer{min-height:68px;padding-top:10px}.footer .btn{min-height:48px}.survey-table-wrap .table th{font-size:20px;padding:6px}.survey-table-wrap .table td,.survey-table-wrap .table td button{height:50px;font-size:28px}.survey-modal{padding:22px 32px}.survey-modal form{gap:18px}.survey-modal-head{padding-bottom:16px}.survey-prompt{gap:16px;padding-top:4px}.survey-product{font-size:23px}.survey-price{font-size:80px}.survey-price-ending{font-size:25px;margin-top:8px}.survey-modal h2{font-size:34px}.survey-response input{height:80px;font-size:44px}.survey-modal-actions{margin-top:4px}.survey-modal-actions .btn{min-height:56px}}
+@media(min-width:761px) and (max-width:1100px){.app{padding:0 20px 14px;gap:14px;min-height:720px}.header{min-height:102px}.brand{font-size:23px}.session{font-size:16px;gap:8px;padding:8px 6px}.session b{width:28px;height:28px;min-width:28px;font-size:16px}main{gap:12px}.question h1{font-size:30px}.question p{font-size:18px}.scene{font-size:17px;min-height:42px;padding:8px 12px}.workflow{gap:12px;min-height:36px}.workflow li{font-size:16px;gap:8px}.workflow b{width:28px;height:28px;font-size:16px}.workflow li:not(:last-child):after{margin-left:0}.plot-workspace{min-height:380px;grid-template-columns:minmax(245px,.38fr) minmax(0,.62fr);gap:12px}.plot-workspace>.rail,.plot-workspace>.graph-area{padding:14px}.plot-workspace>.rail{gap:12px}.plot-workspace h2{font-size:21px}.plot-workspace .table th{height:36px;font-size:17px;padding:6px 4px}.plot-workspace .table td,.plot-workspace .table td button{height:44px;min-height:44px;font-size:22px;padding:4px}.plot-workspace .row-state{width:18px;margin-right:2px;font-size:17px}.plot-graph-heading h2{font-size:20px}.hint-buttons{gap:6px}.hint-buttons button{font-size:14px;min-height:38px;padding:5px 8px}.scenario-line{font-size:18px;padding-bottom:8px}.coordinate-alternative{font-size:15px;min-height:36px}.footer{gap:8px}.footer .quiet{font-size:15px;padding:6px}.footer .btn{font-size:16px;padding:10px 12px}.footer #actionBtn{min-width:200px;font-size:20px}.footer #explainBtn{display:none}.action-status{font-size:17px;gap:8px}.action-status strong{font-size:23px}.activity-layout{grid-template-columns:240px minmax(0,1fr)}.activity-layout.plot-layout,.activity-layout.survey-layout{grid-template-columns:1fr}.control-content{padding:16px}.control-content .control strong{font-size:26px}.control-content .picks button{font-size:16px}.visual-layout.has-reading{display:flex;flex-direction:column;gap:12px}.reading-panel{flex-direction:row}.reading-panel .market-numbers{flex-direction:row;flex:1}.reading-panel .situation{align-self:center;font-size:19px}.metric b{font-size:26px}}
+@media(max-width:760px){.app{height:auto;min-height:100svh;padding:0 16px 16px;gap:20px}.header{padding-top:12px;gap:12px}.brand{font-size:21px}.tools{gap:6px}.tool{font-size:14px;min-height:40px;padding:7px 9px}.tools #fullscreenBtn{display:none}.sessions{display:flex;flex-direction:column;gap:0;width:100%}.session{justify-content:flex-start;font-size:17px;min-height:46px;padding:8px 4px}.session[aria-current=true]:after{left:0;right:0;width:auto;top:auto;bottom:0;height:2px}.session b{min-width:28px;height:28px;font-size:16px}.question h1{font-size:28px}.question p{font-size:18px}.scenes{gap:8px}.scene{font-size:16px;padding:8px 12px;min-height:42px}.workflow{gap:8px;flex-wrap:wrap}.workflow li{font-size:15px;gap:6px;flex:initial}.workflow li:not(:last-child):after{display:none}.workflow b{width:27px;height:27px;font-size:15px}.activity-layout,.activity-layout.plot-layout,.activity-layout.survey-layout{display:flex;flex-direction:column;gap:16px}.plot-workspace{min-height:0;display:flex;flex-direction:column;gap:16px}.plot-workspace>.rail,.plot-workspace>.graph-area{padding:16px}.plot-workspace>.rail{gap:14px}.plot-workspace h2{font-size:21px}.plot-workspace .table th{font-size:18px;padding:8px 4px}.plot-workspace .table td,.plot-workspace .table td button{height:48px;min-height:44px;font-size:24px;padding:6px}.plot-workspace .graph-area{min-height:380px}.plot-workspace .graph-wrap{min-height:260px}.scenario-line{font-size:19px}.plot-graph-heading h2{font-size:20px}.hint-buttons button{font-size:15px;min-height:40px}.text-button{font-size:16px}.graph-wrap{min-height:280px}.visual-layout,.visual-layout.has-reading{display:flex;flex-direction:column}.reading-panel{flex-direction:row;flex-wrap:wrap}.reading-panel .market-numbers{flex-direction:row;flex:1}.control-content{padding:16px;overflow:visible}.control-content .rail{gap:14px}.survey-right{gap:12px}.survey-table-wrap .table td,.survey-table-wrap .table td button{font-size:28px;height:58px}.survey-table-wrap .table th{font-size:19px}.survey-toolbar .tag{font-size:17px}.survey-toolbar .text-button{font-size:15px;padding:6px 10px}.footer{position:sticky;bottom:0;z-index:2;flex-wrap:wrap;padding:12px 0;background:#fff;gap:8px}.footer #actionBtn{order:-1;flex:1 0 100%;min-width:0;font-size:20px;white-space:normal;word-break:keep-all}.action-status{flex-basis:100%;min-height:30px;font-size:17px}.action-status strong{font-size:24px}.footer .quiet{font-size:14px;padding:6px}.footer #explainBtn{display:none}.footer #prevBtn,.footer #nextBtn{font-size:16px;min-height:44px;padding:8px 12px}.guide-grid{grid-template-columns:1fr}dialog{padding:22px;width:94vw}dialog h2{font-size:26px}dialog h3{font-size:22px}dialog p,dialog li{font-size:18px}.dialog-actions .btn{font-size:17px}.survey-modal{padding:20px;width:94vw;max-height:94svh}.survey-modal form{gap:22px}.survey-modal-head{padding-bottom:16px;gap:8px}.survey-modal-step{font-size:17px}.survey-size{font-size:16px;gap:6px}.survey-size input{width:58px;font-size:18px;padding:7px}.survey-modal-head .text-button{font-size:16px;padding:6px}.survey-prompt{gap:18px;padding-top:6px}.survey-product{font-size:21px}.survey-price{font-size:68px}.survey-price-ending{font-size:22px;margin-top:10px}.survey-modal h2{font-size:29px}.survey-response{font-size:26px;gap:12px}.survey-response input{width:190px;height:82px;font-size:44px}.survey-modal-actions{gap:10px;margin-top:4px}.survey-modal-actions .btn{font-size:17px;min-height:54px;padding:10px 8px}}
+@media(max-height:650px){.survey-modal{padding:16px 24px}.survey-modal form{gap:12px}.survey-modal-head{padding-bottom:10px}.survey-prompt{gap:10px;padding-top:0}.survey-product{font-size:21px}.survey-price{font-size:60px}.survey-price-ending{font-size:22px;margin-top:6px}.survey-modal h2{font-size:28px}.survey-response input{height:66px;font-size:38px}.survey-modal-actions .btn{min-height:48px}}
+@media(max-width:760px){.footer:has(#actionStatus:not([hidden])) #actionBtn{order:1;flex:1;min-height:48px;font-size:18px}.footer:has(#actionStatus:not([hidden])) .quiet{font-size:13px;padding:4px}.action-status:empty{display:none}}
+.activity-layout.market-layout{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}.market-layout .control-content{padding:0;border:0;background:transparent;overflow:visible}.market-layout .control-content>.rail{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.market-layout .control{justify-content:flex-start}.market-layout .control strong{min-width:150px}.market-layout .market-prediction{display:flex;align-items:center;gap:12px}.market-layout .prediction-title{font-size:18px;white-space:nowrap}.market-layout .picks button{font-size:17px;min-width:88px}.market-layout .picks button br{display:none}
+.app:has(.market-layout){height:auto;min-height:100svh}.market-layout .visual-layout{min-height:360px;flex-shrink:0}.market-layout .graph-wrap{position:relative;min-height:280px}.market-layout .graph-wrap>svg{position:absolute;inset:0}
+.plot-workspace .table td{padding:0}
+@media(max-width:760px){.activity-layout.market-layout{display:flex}.market-layout .market-prediction{flex-wrap:wrap;gap:8px}.market-layout .picks button{font-size:16px;min-width:82px}.plot-workspace .tick,.tick{font-size:34px}.plot-workspace .graph-label,.graph-label{font-size:34px}}
+.plot-workspace .table tr.motion-price td:first-child{background:#DBE7FF;box-shadow:inset 0 -3px var(--motion-ink,var(--purple))}.plot-workspace .table tr.motion-price .row-state{visibility:hidden}.plot-workspace .table tr.motion-quantity td:last-child{background:#DBE7FF;color:var(--motion-ink,var(--purple));font-weight:750}.tick.motion-price-tick{fill:var(--motion-ink,var(--purple));font-weight:750}
+#pointErrorDialog{width:min(640px,92vw)}#pointErrorMessage{margin-top:16px;word-break:keep-all}
+
+.app.market-mode{height:100svh;min-height:680px;gap:10px;padding-bottom:10px}.market-mode main{gap:10px}.market-mode .question h1{font-size:34px;line-height:1.2;font-weight:750}.market-mode .activity-layout{display:flex;flex-direction:column;gap:0}.market-mode .control-content{display:none}.market-experiment{display:flex;flex-direction:column;gap:8px;flex:1;min-height:0}.market-quantities{display:grid;grid-template-columns:1fr 1fr;width:min(528px,100%);align-self:center;min-height:96px}.market-quantity{text-align:center;display:flex;flex-direction:column;justify-content:center;gap:2px}.market-quantity+.market-quantity{border-left:1px solid var(--line)}.market-quantity span{font-size:21px;line-height:1.3;color:var(--muted);font-weight:550}.market-quantity strong{font-size:54px;line-height:1.05;font-weight:700;color:var(--d);font-variant-numeric:tabular-nums}.market-quantity.s strong{color:var(--s)}.market-canvas{position:relative;flex:1;min-height:270px;margin-top:-16px}.market-canvas>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.market-canvas .tick{font-size:18px}.market-canvas .graph-label{font-size:20px}.market-canvas text:not(.tick):not(.graph-label){font-size:18px}.market-canvas .curve{stroke-width:3}.market-canvas .dot{stroke-width:2}.market-current-price{display:flex;flex-direction:column;align-items:center;gap:2px}.market-current-price label{font-size:15px;color:var(--muted);font-weight:550}.market-current-price output{font-size:30px;line-height:1.2;white-space:nowrap;font-variant-numeric:tabular-nums}.market-mode .footer{min-height:54px;padding-top:0;border-top:0;gap:16px}.market-mode .footer #undoBtn{font-size:16px;padding:8px}.market-mode .footer #actionBtn{flex:1;min-width:0;min-height:50px;font-size:20px;line-height:1.3;padding:10px 20px}.market-mode #fullscreenBtn{display:none}.market-dialog{width:min(620px,92vw)}.market-dialog .dialog-actions{margin-top:24px}.market-dialog .picks{display:flex;flex-direction:column;gap:12px;margin-top:24px}.market-dialog .picks button{min-height:56px;font-size:22px;padding:12px}.market-dialog-price{color:var(--muted);font-size:24px;margin-top:12px}.market-result-content{font-size:24px;line-height:1.6;margin-top:18px;word-break:keep-all}.market-result-content p+p{margin-top:12px}.market-result-content strong{color:var(--purple)}
+@media(min-width:761px) and (max-width:1100px){.app.market-mode{gap:10px;min-height:680px}.market-mode .question h1{font-size:34px}.market-quantities{min-height:96px}.market-quantity strong{font-size:54px}.market-mode .footer #actionBtn{font-size:20px}.market-mode .footer #undoBtn{font-size:16px}}
+@media(max-height:760px) and (min-width:761px){.app.market-mode{gap:8px}.market-mode .question h1{font-size:30px}.market-mode .market-quantities{min-height:84px}.market-mode .market-quantity strong{font-size:46px}.market-mode .market-canvas{min-height:230px}}
+@media(max-width:760px){.app.market-mode{height:auto;min-height:100svh;gap:16px}.market-mode .question h1{font-size:28px}.market-quantities{min-height:88px}.market-quantity span{font-size:19px}.market-quantity strong{font-size:40px}.market-canvas{flex:initial;height:320px;min-height:320px;margin-top:0}.market-current-price output{font-size:30px}.market-mode .footer{position:static;flex-wrap:nowrap;padding:10px 0;background:#fff;gap:10px}.market-mode .footer #actionBtn{order:0;flex:1;min-height:52px;font-size:18px}.market-mode .footer #undoBtn{font-size:14px;white-space:nowrap;padding:6px}.market-dialog{padding:24px}.market-result-content{font-size:21px}}
+
+
+.market-workspace{display:grid;grid-template-columns:minmax(0,1fr) 156px;gap:24px;flex:1;min-height:0}.market-workspace .market-canvas{margin-top:0}.market-price-control{position:relative;min-width:0;border-left:1px solid var(--line);padding-left:16px}.market-current-price label{font-size:18px}.market-current-price output{font-weight:650}.market-slider-track{position:absolute;top:var(--price-track-top,80px);height:var(--price-track-height,240px);left:16px;right:0;display:flex;justify-content:center}.market-price-slider{appearance:none;-webkit-appearance:none;writing-mode:vertical-lr;direction:rtl;width:44px;height:100%;margin:0;padding:0;border:0;background:transparent;cursor:grab;touch-action:none;accent-color:var(--purple)}.market-price-slider:active{cursor:grabbing}.market-price-slider:disabled{opacity:.45;cursor:default}.market-price-slider::-webkit-slider-runnable-track{width:8px;height:100%;border-radius:8px;background:var(--line)}.market-price-slider::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:28px;height:28px;margin-left:-10px;border:3px solid #fff;border-radius:50%;background:var(--purple);box-shadow:0 0 0 2px var(--purple)}.market-price-slider::-moz-range-track{width:8px;height:100%;border-radius:8px;background:var(--line)}.market-price-slider::-moz-range-thumb{width:22px;height:22px;border:3px solid #fff;border-radius:50%;background:var(--purple);box-shadow:0 0 0 2px var(--purple)}
+@media(max-width:760px){.market-workspace{grid-template-columns:minmax(0,1fr) 100px;gap:12px;flex:initial}.market-price-control{padding-left:8px}.market-slider-track{left:8px}.market-current-price label{font-size:16px}.market-current-price output{font-size:22px;letter-spacing:-.04em}}
+
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-@media print{body{background:white}.app{height:auto;min-height:0}.header .tools,.sessions,.scenes,.footer,.rail-actions,.hint-buttons,dialog{display:none}.stage{border:0;min-height:500px}.question h1{font-size:28px}.workspace{min-height:450px}.print-only{display:block}}
-
-/* 교사 조작은 오른쪽에, 관찰 자료는 왼쪽에 모은다. */
-.app{min-height:0;padding-bottom:16px}.header{display:grid;grid-template-columns:minmax(0,1fr)360px;column-gap:20px}.header .tools{justify-content:flex-end}.lesson-layout{display:grid;grid-template-columns:minmax(0,1fr)360px;gap:20px;flex:1;min-height:0;padding-top:12px}.lesson-layout>main{min-width:0}.question{padding:2px 0 16px}.stage{padding:16px;gap:12px}.workspace{display:flex;flex-direction:column;gap:12px;min-height:0}.source-strip{display:flex;gap:12px;flex-wrap:wrap;align-items:center;flex-shrink:0;min-height:28px}.visual-layout{display:flex;flex:1;min-height:0;min-width:0}.visual-layout.has-reading{display:grid;grid-template-columns:210px minmax(0,1fr);gap:16px}.reading-panel{display:flex;flex-direction:column;justify-content:center;gap:16px;min-width:0}.reading-panel p{font-size:21px;word-break:keep-all}.reading-panel .table th{font-size:18px}.reading-panel .table td{height:44px;font-size:24px}.reading-panel .table .marked{color:var(--purple);font-weight:800}.reading-panel .market-numbers{flex-direction:column}.reading-panel .metric{padding:10px 14px}.reading-panel .comparison{grid-template-columns:1fr}.visual-layout>.graph-area,.visual-layout>.survey-right,.visual-layout>.summary-material{min-width:0;width:100%;flex:1}.graph-head{flex-wrap:wrap;align-content:flex-start}.graph-wrap{min-height:0}.survey-right{gap:24px}.control-panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:12px;display:flex;flex-direction:column;gap:10px;min-height:0}.control-panel .sessions{grid-template-columns:1fr 1fr;gap:6px;padding:0;flex-shrink:0}.control-panel .session{font-size:17px;gap:6px;padding:6px;min-height:44px;white-space:normal;border-radius:8px}.control-panel .session b{font-size:14px;min-width:26px;width:26px;height:26px;display:grid;place-items:center;padding:0;flex-shrink:0}.control-panel .scenes{display:grid;grid-template-columns:1fr 1fr;gap:4px;min-height:0;border-top:1px solid var(--line);padding-top:8px;flex-shrink:0}.control-panel .scene{font-size:16px;padding:5px 3px;text-align:left;white-space:nowrap}.control-panel .scene:before{margin-right:5px}.control-panel .scene[aria-current=step]{border-bottom-width:2px}.control-content{flex:1;min-height:0;padding:2px 0}.control-content>.rail{height:100%;gap:10px}.control-content .rail p{font-size:20px}.control-content .rail .small{font-size:17px!important}.control-content .control{gap:10px;justify-content:space-between}.control-content .control strong{font-size:32px;min-width:0}.control-content .control button{width:48px;height:48px}.control-content .rail-actions button{font-size:17px;min-height:44px;padding:6px}.control-content .scenario-select{font-size:19px;min-height:44px;padding:6px}.control-content .picks button{font-size:18px;min-height:44px;padding:6px}.control-content .number-entry input{font-size:28px}.row-picker-label{font-size:18px;font-weight:700}.control-panel .footer{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px;min-height:0;padding:10px 0 0;border-top:1px solid var(--line);flex-shrink:0}.control-panel .counter{grid-column:1/-1;font-size:16px;min-width:0}.control-panel .btn{font-size:18px;min-height:46px;padding:8px 6px;white-space:normal}.control-panel #actionBtn{grid-column:1/-1;grid-row:2;min-height:52px;font-size:21px}.control-panel #undoBtn{grid-column:1;grid-row:3;font-size:16px}.control-panel #explainBtn{grid-column:2;grid-row:3}.control-panel #prevBtn{grid-column:1;grid-row:4}.control-panel #nextBtn{grid-column:2;grid-row:4}.summary-material{display:flex;flex-direction:column;justify-content:center;gap:24px}.feedback{font-size:23px}.table td>span{display:block;padding:4px}.wide-table td>span{font-size:27px}.control-content:empty{display:none}
-@media(min-width:1101px) and (min-height:900px){.app{max-width:1800px;padding-bottom:20px}.header,.lesson-layout{grid-template-columns:minmax(0,1fr)400px;column-gap:28px}.control-panel{padding:16px;gap:16px}.control-panel .session{font-size:19px;min-height:50px}.control-panel .scene{font-size:18px}.control-content>.rail{gap:16px}.control-content .rail p{font-size:23px}.control-content .rail-actions button{font-size:20px;min-height:50px}.control-content .scenario-select{font-size:22px;min-height:50px}.control-panel .btn{font-size:21px;min-height:52px}.control-panel #actionBtn{font-size:24px;min-height:60px}.control-panel #undoBtn{font-size:18px}.control-content .control strong{font-size:36px}.control-content .control button{height:54px;width:54px}.visual-layout.has-reading{grid-template-columns:250px minmax(0,1fr);gap:24px}.reading-panel .table td{font-size:28px;height:56px}.reading-panel .table th{font-size:21px}.reading-panel p{font-size:25px}.feedback{font-size:27px}}
-@media(min-width:1101px) and (max-height:750px){.header{height:48px}.lesson-layout{padding-top:8px}.control-panel{padding:10px;gap:6px}.control-panel .session{min-height:40px}.control-panel .scene{padding:4px 3px}.control-content>.rail{gap:8px}.control-panel .footer{gap:6px;padding-top:8px}.control-panel .btn{min-height:42px}.control-panel #actionBtn{min-height:48px}.control-panel .counter{font-size:15px}.feedback{font-size:21px;min-height:48px}.question{padding-bottom:12px}}
-@media(max-width:1100px){.app{height:auto;min-height:100svh;padding:0 16px 16px}.header,.lesson-layout{grid-template-columns:minmax(0,1fr)320px;gap:16px}.control-panel{align-self:start;position:sticky;top:12px}.stage{min-height:620px}.visual-layout.has-reading{display:flex;flex-direction:column;gap:16px}.reading-panel{flex-shrink:0}.reading-panel .table td{height:34px}.reading-panel .table{font-size:21px}.reading-panel .market-numbers,.reading-panel .comparison{flex-direction:row;grid-template-columns:1fr 1fr}.graph-wrap{min-height:330px}.control-content>.rail{height:auto}.control-panel .footer{margin-top:8px}.brand{font-size:21px}.brand small{display:none}.control-panel .session{font-size:16px}.control-panel .scene{font-size:15px}}
-@media(max-width:740px){.header{display:flex;height:58px}.header .tools{gap:4px}.tool{font-size:14px;padding:6px}.lesson-layout{display:flex;flex-direction:column}.lesson-layout>main{order:0}.control-panel{order:1;position:static;width:100%}.stage{min-height:560px}.question h1{font-size:29px}.control-content>.rail{height:auto}.control-panel .sessions{grid-template-columns:1fr 1fr}.control-panel .session{font-size:18px}.control-panel .scenes{grid-template-columns:1fr 1fr}.visual-layout.has-reading{display:flex;flex-direction:column}.reading-panel .market-numbers{flex-direction:row}.control-panel .btn{font-size:19px}.graph-wrap{min-height:300px}.control-panel .footer{grid-template-columns:1fr 1fr}.feedback{font-size:21px}.brandmark{display:none}.brand{font-size:18px}.survey-right{min-height:260px}}
-@media print{.control-panel{display:none}.lesson-layout{display:block}.header{display:block}.workspace{min-height:500px}.visual-layout.has-reading{display:grid;grid-template-columns:210px minmax(0,1fr)}.reading-panel .table{display:table}.stage{min-height:550px}}
-
-.price-row-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.price-row-option{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:52px;padding:4px 6px;line-height:1.15;font-size:18px;gap:3px}.price-row-option small{font-size:14px;font-weight:400;color:var(--muted)}.price-row-option[aria-pressed=true]{background:var(--soft);border-color:var(--purple);box-shadow:inset 0 0 0 1px var(--purple);color:var(--purple)}.control-content>.rail:has(.price-row-buttons){gap:8px}
-@media(min-width:1101px) and (max-height:880px){.control-content>.rail:has(.price-row-buttons){gap:6px}}
-@media(min-width:1101px) and (min-height:900px){.price-row-option{min-height:62px;font-size:21px}.price-row-option small{font-size:17px}.control-content>.rail:has(.price-row-buttons){gap:14px}}
-@media(min-width:1101px) and (max-height:750px){.price-row-option{min-height:46px;font-size:17px;gap:2px}.price-row-option small{font-size:13px}}
-
-.market-prediction{display:flex;flex-direction:column;gap:8px}.prediction-title{font-weight:700;line-height:1.4}.market-prediction .picks button{font-size:17px;line-height:1.2;min-height:52px;word-break:keep-all}.market-prediction .small{margin:0}
-@media(min-width:1101px) and (min-height:900px){.market-prediction .picks button{font-size:20px;min-height:58px}}
-
-.scenario-retry-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px}.scenario-retry-buttons button{min-height:54px;padding:10px;font-size:20px;word-break:keep-all}
-@media(min-width:1101px) and (min-height:900px){.scenario-retry-buttons button{min-height:60px;font-size:23px}}
+@media print{body{background:white}.app{height:auto;min-height:0}.header .tools,.sessions,.scenes,.workflow,.footer,.rail-actions,.hint-buttons,.coordinate-alternative,dialog{display:none}.activity-layout{display:block}.control-content{display:none}.plot-workspace{min-height:450px;grid-template-columns:35% 65%}.plot-workspace>.graph-area{min-height:400px}.question h1{font-size:28px}.print-only{display:block}}
 </style>
 </head>
 <body>
 <div class="app">
- <header class="header"><div class="brand"><span class="brandmark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 32 32" fill="none"><path d="M5 4v23h23M9 9l15 14M9 23 24 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="17" cy="16" r="3" fill="#F2D57E"/></svg></span>경제 그래프 실험실 <small>선택을 점으로, 점을 시장으로</small></div><div class="tools"><button class="tool" id="guideBtn">수업 안내</button><button class="tool" id="fullscreenBtn">전체화면</button></div></header>
- <div class="lesson-layout">
-  <main><div class="question"><h1 id="question" tabindex="-1"></h1><p id="description"></p></div><section class="stage" id="stage" aria-labelledby="question"></section></main>
-  <aside class="control-panel" aria-label="교사 조작 패널">
-   <nav class="sessions" id="sessions" aria-label="수업 차시"></nav>
-   <nav class="scenes" id="scenes" aria-label="현재 차시의 장면"></nav>
-   <div class="control-content" id="controlContent"></div>
-   <footer class="footer"><span class="counter" id="counter"></span><button class="btn" id="prevBtn">이전</button><button class="btn" id="undoBtn">한 단계 되돌리기</button><button class="btn" id="explainBtn" aria-pressed="false">설명 보기</button><button class="btn primary" id="actionBtn">공개하기</button><button class="btn next" id="nextBtn">다음</button></footer>
-  </aside>
- </div>
+ <header class="header"><div class="brand">경제 그래프 실험실</div><nav class="sessions" id="sessions" aria-label="활동 순서"></nav><div class="tools"><button class="tool" id="guideBtn">수업 안내</button><button class="tool" id="fullscreenBtn">전체화면</button></div></header>
+ <main>
+  <div class="question"><h1 id="question" tabindex="-1"></h1><p id="description"></p></div>
+  <nav class="scenes" id="scenes" aria-label="현재 활동의 순서"></nav>
+  <ol class="workflow" id="workflow" aria-label="현재 활동 진행 순서"></ol>
+  <div class="activity-layout" id="activityLayout"><aside class="control-content" id="controlContent" aria-label="현재 활동 조작"></aside><section class="stage" id="stage" aria-labelledby="question"></section></div>
+ </main>
+ <footer class="footer"><div class="action-status" id="actionStatus" role="status"></div><button class="quiet" id="undoBtn">한 단계 되돌리기</button><button class="quiet" id="explainBtn" aria-pressed="false">설명 보기</button><button class="btn" id="prevBtn">이전</button><button class="btn primary" id="actionBtn">공개하기</button><button class="btn" id="nextBtn">다음</button></footer>
 </div>
 <div class="sr-only" role="status" aria-live="polite" id="announcement"></div>
 <dialog id="guideDialog" aria-labelledby="guideTitle">
- <h2 id="guideTitle">교사가 함께 그리는 네 차시</h2>
- <p>각 차시는 독립적으로 열 수 있습니다. 학생의 예측·응답을 먼저 듣고, 교사가 원하는 때 점과 결과를 공개합니다. 선택만으로 다음 장면으로 넘어가지 않습니다.</p>
-<h3>1차시 · 응답과 점 찍기</h3>
- <ul><li>같은 아이스크림을 자기 용돈으로 한 사람당 최대 한 개 구매하는 상황입니다. 가격별 질문은 각각 별개의 가정입니다.</li><li>1,000원부터 가격을 올리며 구매 의향 인원을 기록합니다. ‘예시자료 사용’은 실제 응답과 구분됩니다. 학급 인원은 5~60명으로 조정할 수 있습니다.</li><li>오른쪽에서 점으로 옮길 가격을 고르고 그래프를 클릭해 좌표를 선택한 뒤 ‘점 확정’을 누릅니다. ‘표 좌표 선택’은 키보드·정확한 조작을 위한 대안입니다. 수량 위치와 가격 높이는 따로 공개할 수 있습니다.</li><li>응답의 모양을 바꾸지 않습니다. 수량이 같거나 예상과 다른 관계가 나와도 그대로 표시하고 상품·가격 범위·응답 이유를 확인합니다. 일부만 기록했다면 두 점 이상으로 연결할 수 있습니다.</li><li>공급은 생산자가 각 가격에서 하루 동안 생산·판매하려는 계획을 나타낸 가상 자료입니다. 소비자의 손들기 응답과 구별합니다.</li></ul>
- <h3>2~4차시 · 같은 가상 시장</h3>
- <p>학급 응답에서 별도의 학습용 아이스크림 시장으로 전환합니다. 가격 1,000 / 2,000 / 3,000 / 4,000 / 5,000원에 수요량은 20 / 16 / 12 / 8 / 4개, 공급량은 4 / 8 / 12 / 16 / 20개입니다. 기본 균형은 3,000원·12개입니다. 모든 수량은 하루 기준입니다.</p>
- <p>가격 이외의 조건을 고정한 직선 모형입니다. 가격 조정은 500원씩 교사가 진행하는 설명용 단계이며 실제 시장의 시간·속도·경매 규칙을 재현하지 않습니다. 거래가 원활하다고 가정할 때 거래 가능한 수량은 두 수량 중 작은 값이며, 거래가 실제로 그만큼 이루어졌다는 관측값이 아닙니다.</p>
- <h3>3차시 · 먼저 새로 그리고, 나중에 비교</h3>
- <p>상황 선택 → 새 표 공개 → 새 점 찍기 → 새 선 연결 → 이전 곡선 겹쳐 보기 순서입니다. 새 점을 찍는 동안 이전 곡선은 숨깁니다. 같은 가격들에서 수량이 각각 4개 늘거나 줄어드는 가상 계획이며 실제 조사 결과가 아닙니다.</p>
- <h3>4차시 · 이전 가격에서 다시 시작</h3>
- <p>수요 증가·감소, 공급 증가·감소 중 하나를 골라 예측합니다. 새 곡선 공개 → 이전 가격에서 불일치 확인 → 시장 반응 공개 → 가격 조정 → 두 균형 비교 순서입니다. 한 곡선만 바뀌고 다른 곡선은 일정한 경우를 다룹니다.</p>
+ <h2 id="guideTitle">수요곡선부터 시장 균형까지</h2>
+ <p>세 활동은 위쪽 버튼으로 선택합니다. 학생의 예측·응답을 먼저 듣고, 교사가 원하는 때 점과 결과를 공개합니다. 선택만으로 다음 장면으로 넘어가지 않습니다.</p>
+<h3>수요곡선 만들기 · 공급곡선 만들기</h3>
+ <ul><li>같은 아이스크림을 자기 용돈으로 한 사람당 최대 한 개 구매하는 상황입니다. 가격별 질문은 각각 별개의 가정입니다.</li><li>「구매 의향 조사」를 눌러 모달에서 1,000원부터 가격별로 응답을 기록합니다. 기록하면 다음 가격으로 넘어가며, 마지막 가격을 기록하면 표로 돌아옵니다. 표의 가격을 누르면 해당 응답을 수정할 수 있습니다. ‘예시자료 사용’은 실제 응답과 구분됩니다. 학급 인원은 응답 표 화면에서 5~60명으로 조정할 수 있습니다.</li><li>표에서 점으로 옮길 가격의 행을 고르고 그래프를 클릭해 좌표를 선택한 뒤 ‘점 확정’을 누릅니다. ‘표 좌표 선택’은 키보드·정확한 조작을 위한 대안입니다.</li><li>응답의 모양을 바꾸지 않습니다. 수량이 같거나 예상과 다른 관계가 나와도 그대로 표시하고 상품·가격 범위·응답 이유를 확인합니다. 일부만 기록했다면 두 점 이상으로 연결할 수 있습니다.</li><li>공급은 생산자가 각 가격에서 하루 동안 생산·판매하려는 계획을 나타낸 가상 자료입니다. 소비자의 손들기 응답과 구별합니다.</li></ul>
+ <h3>시장 균형 확인하기 · 내가 그린 곡선</h3>
+ <p>앞에서 완성한 수요곡선과 공급곡선을 함께 사용합니다. 점 사이의 수량은 그린 선을 따라 계산하며, 두 곡선에 공통으로 기록한 가격 범위만 확인합니다. 교차점이 여러 개이거나 없을 수 있고, 선이 겹치면 균형 구간으로 표시합니다. 학급 응답을 수정하지 않습니다.</p>
+ <p>시장 화면은 한 화면에서 진행합니다. 오른쪽 세로 슬라이더를 위아래로 움직이면 가격이 1,000원씩 바뀌고 가격선과 두 수량이 즉시 갱신됩니다. 방향키와 Home·End로도 조절할 수 있습니다. 주 버튼으로 가격 반응을 예측하고 결과·균형을 모달에서 확인합니다. 한 번의 드래그는 되돌리기 한 단계로 기록합니다.</p>
+ <p>점 사이를 직선으로 연결한 모형입니다. 가격은 1,000원 단위로 조절하지만 균형은 그 간격과 별개로 실제 교점에서 계산합니다. 균형이 두 선택 가격 사이에 있으면 균형 위치와 계산값을 확인합니다. 설명용 단계이며 실제 시장의 시간·속도·경매 규칙을 재현하지 않습니다. 거래가 원활하다고 가정할 때 거래 가능한 수량은 두 수량 중 작은 값이며, 거래가 실제로 그만큼 이루어졌다는 관측값이 아닙니다.</p>
  <h3>조작과 기록</h3>
- <p>오른쪽 패널의 차시와 장면으로 자유롭게 이동합니다. ← / → 키는 장면을 이동하며 입력·선택 중에는 작동하지 않습니다. 이 브라우저에 진행을 저장하되, 저장이 제한되면 현재 창에서만 유지됩니다. 다른 기기로 이어가려면 기록을 내려받아 불러오세요. 기록에는 인원수와 조작 상태만 담기며 이름이나 계정은 필요하지 않습니다.</p>
+ <p>화면 위쪽의 활동과 순서로 자유롭게 이동합니다. ← / → 키는 장면을 이동하며 입력·선택 중에는 작동하지 않습니다. 이 브라우저에 진행을 저장하되, 저장이 제한되면 현재 창에서만 유지됩니다. 다른 기기로 이어가려면 기록을 내려받아 불러오세요. 기록에는 인원수와 조작 상태만 담기며 이름이나 계정은 필요하지 않습니다.</p>
  <div class="dialog-actions"><button class="btn" id="exportBtn">기록 내려받기</button><button class="btn" id="importBtn">기록 불러오기</button><button class="btn" id="resetBtn">전체 초기화</button></div><input id="importFile" type="file" accept="application/json,.json" hidden><p class="export-status" id="storageStatus"></p>
 <div class="dialog-actions"><button class="btn next" id="closeGuideBtn">수업으로 돌아가기</button></div>
 </dialog>
-<dialog id="confirmDialog" aria-labelledby="confirmTitle"><h2 id="confirmTitle">전체 기록을 초기화할까요?</h2><p>네 차시의 응답·점·공개 상태와 저장된 진행 기록을 모두 지웁니다. 필요한 경우 먼저 기록을 내려받으세요.</p><div class="dialog-actions"><button class="btn" id="cancelResetBtn">취소</button><button class="btn next" id="confirmResetBtn">전체 초기화</button></div></dialog>
-<dialog id="endDialog" aria-labelledby="endTitle"><h2 id="endTitle">오늘의 그래프를 말로 설명해 봅시다</h2><div id="endQuestions"></div><div class="dialog-actions"><button class="btn next" id="closeEndBtn">현재 차시로 돌아가기</button></div></dialog>
+<dialog id="surveyDialog" class="survey-modal" aria-labelledby="surveyProduct surveyPrice surveyPriceEnding surveyQuestion">
+ <form id="surveyForm" novalidate>
+  <div class="survey-modal-head"><span class="survey-modal-step" id="surveyStep"></span><button class="text-button" id="closeSurveyBtn" type="button">닫기</button></div>
+  <div class="survey-prompt"><p class="survey-product" id="surveyProduct">아이스크림 한 개의 가격이</p><p class="survey-price"><span id="surveyPrice"></span><span class="survey-price-ending" id="surveyPriceEnding"></span></p><h2 id="surveyQuestion">몇 명이 살까요?</h2></div>
+  <label class="survey-response" for="responseCount"><input id="responseCount" type="number" min="0" step="1" inputmode="numeric" required aria-label="구매 의향 인원" aria-describedby="countNote"><span>명</span></label><p id="countNote" class="sr-only">학급 인원 이하의 구매 의향 인원을 입력하세요. 한 사람당 한 개를 구매합니다.</p>
+  <div class="survey-modal-actions"><button class="btn" type="button" id="surveyPrevBtn">이전 가격</button><button class="btn primary" type="submit" id="surveySubmitBtn">기록하고 다음 →</button></div>
+ </form>
+</dialog>
+<dialog id="pointErrorDialog" aria-labelledby="pointErrorTitle" aria-describedby="pointErrorMessage"><h2 id="pointErrorTitle">점 위치 확인</h2><p id="pointErrorMessage"></p><div class="dialog-actions"><button class="btn next" id="closePointErrorBtn" autofocus>다시 선택하기</button></div></dialog>
+<dialog id="scenarioDialog" class="scenario-picker" aria-labelledby="scenarioTitle"><h2 id="scenarioTitle">어떤 상황으로 다시 그릴까요?</h2><p>상황을 바꾸면 이 그래프의 점과 선을 새로 그립니다.</p><div class="scenario-choices" id="scenarioChoices"></div><div class="dialog-actions"><button class="btn" id="closeScenarioBtn">돌아가기</button></div></dialog>
+<dialog id="confirmDialog" aria-labelledby="confirmTitle"><h2 id="confirmTitle">전체 기록을 초기화할까요?</h2><p>응답·점·공개 상태와 저장된 진행 기록을 모두 지웁니다. 필요한 경우 먼저 기록을 내려받으세요.</p><div class="dialog-actions"><button class="btn" id="cancelResetBtn">취소</button><button class="btn next" id="confirmResetBtn">전체 초기화</button></div></dialog>
+<dialog id="marketPredictionDialog" class="market-dialog" aria-labelledby="marketPredictionTitle">
+ <h2 id="marketPredictionTitle">가격은 어떻게 될까요?</h2><p class="market-dialog-price" id="marketPredictionPrice"></p><div id="marketPredictionChoices"></div><div class="dialog-actions"><button class="btn" id="closeMarketPredictionBtn">닫기</button></div>
+</dialog>
+<dialog id="marketResultDialog" class="market-dialog" aria-labelledby="marketResultTitle">
+ <h2 id="marketResultTitle"></h2><div id="marketResultContent" class="market-result-content"></div><div class="dialog-actions"><button class="btn" id="closeMarketResultBtn">닫기</button><button class="btn next" id="marketResultAction" autofocus></button></div>
+</dialog>
+<dialog id="endDialog" aria-labelledby="endTitle"><h2 id="endTitle">오늘의 그래프를 말로 설명해 봅시다</h2><div id="endQuestions"></div><div class="dialog-actions"><button class="btn next" id="closeEndBtn">활동으로 돌아가기</button></div></dialog>
 <script>
 'use strict';
 const $=id=>document.getElementById(id), fmt=n=>Number.isInteger(n)?n.toLocaleString('ko-KR'):n.toLocaleString('ko-KR',{maximumFractionDigits:1});
 const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const PRICES=[1000,2000,3000,4000,5000], DEMAND=[20,16,12,8,4], SUPPLY=[4,8,12,16,20], KEY='market-graph-lab-v1';
-const D='#216BA5',S='#A43D70';
+const D='#2458ED',S='#B95032';
 // 제공받은 교과서 48~55쪽의 정의와 설명 흐름을 수업 화면에 맞게 나누어 사용한다.
 const CONCEPT={
  demandTerms:'상품을 사려는 사람을 <strong>수요자</strong>라고 합니다. 상품을 사고자 하는 욕구가 <strong>수요</strong>이며, 특정 가격에서 구매하고자 하는 상품의 구체적인 양이 <strong>수요량</strong>입니다.',
@@ -110,19 +139,82 @@ const scenarios={
 const curveQ=(kind,p,delta=0)=>Math.max(0,(kind==='d'?24-4*p/1000:4*p/1000)+delta);
 function equilibrium(d=0,s=0){const p=(24+d-s)/8*1000;return {p,q:curveQ('s',p,s)};}
 function marketAt(p,d=0,s=0){const qd=curveQ('d',p,d),qs=curveQ('s',p,s);return {p,qd,qs,gap:Math.abs(qd-qs),type:qd>qs?'초과 수요':qd<qs?'초과 공급':'균형',trade:Math.min(qd,qs)};}
+// The market uses the same confirmed vertices as the two plotting activities.
+function lessonMarket(){
+ const demand=state.dplot.points.filter(i=>state.survey.values[i]!==null).slice().sort((a,b)=>a-b),supply=state.splot.points.slice().sort((a,b)=>a-b);
+ if(!state.dplot.line||demand.length<2||!state.splot.line||supply.length<2)return null;
+ const min=Math.max(PRICES[demand[0]],PRICES[supply[0]]),max=Math.min(PRICES[demand.at(-1)],PRICES[supply.at(-1)]);
+ return min<=max?{demand,supply,min,max}:null;
+}
+function quantityOnCurve(values,indices,p){
+ for(let j=1;j<indices.length;j++){
+  const a=indices[j-1],b=indices[j];
+  if(p>=PRICES[a]&&p<=PRICES[b])return values[a]+(values[b]-values[a])*(p-PRICES[a])/(PRICES[b]-PRICES[a]);
+ }
+ return null;
+}
+function lessonMarketAt(p,data=lessonMarket()){
+ if(!data)return null;
+ p=Math.max(data.min,Math.min(data.max,p));
+ const qd=quantityOnCurve(state.survey.values,data.demand,p),rawSupply=quantityOnCurve(SUPPLY,data.supply,p),balanced=Math.abs(qd-rawSupply)<1e-8,qs=balanced?qd:rawSupply;
+ return {p,qd,qs,gap:Math.abs(qd-qs),type:balanced?'균형':qd>qs?'초과 수요':'초과 공급',trade:Math.min(qd,qs)};
+}
+function lessonEquilibria(data=lessonMarket()){
+ if(!data)return [];
+ const knots=[...new Set([data.min,...PRICES.filter(p=>p>data.min&&p<data.max),data.max])],result=[];
+ const add=(p,endP=p)=>{
+  const q=lessonMarketAt(p,data).qd,last=result.at(-1);
+  if(last&&Math.abs((last.endP??last.p)-p)<1e-7){if(endP>p){last.endP=endP;last.endQ=lessonMarketAt(endP,data).qd;}return;}
+  result.push({p,q,...(endP>p?{endP,endQ:lessonMarketAt(endP,data).qd}:{})});
+ };
+ for(let i=0;i<knots.length;i++){
+  const p=knots[i],at=lessonMarketAt(p,data),diff=at.qd-at.qs,next=knots[i+1];
+  if(next===undefined){if(Math.abs(diff)<1e-8)add(p);break;}
+  const after=lessonMarketAt(next,data),nextDiff=after.qd-after.qs;
+  if(Math.abs(diff)<1e-8&&Math.abs(nextDiff)<1e-8)add(p,next);
+  else{if(Math.abs(diff)<1e-8)add(p);if(diff*nextDiff<0)add(p+(next-p)*diff/(diff-nextDiff));}
+ }
+ return result;
+}
+function marketControlPrice(p,data=lessonMarket()){
+ return Math.max(data?.min??1000,Math.min(data?.max??5000,Math.round(p/1000)*1000));
+}
+function lessonMarketStep(p,data=lessonMarket()){
+ const at=lessonMarketAt(marketControlPrice(p,data),data);if(!at||!at.gap)return at?.p??p;
+ const end=marketControlPrice(at.p+(at.qd>at.qs?1000:-1000),data),after=lessonMarketAt(end,data);
+ // If the intersection lies between selectable prices, reveal it instead of oscillating.
+ return (at.qd-at.qs)*(after.qd-after.qs)<0?at.p:end;
+}
+function prepareLessonMarket(){
+ const data=lessonMarket();if(state.session!==1||!data)return;
+ for(const m of state.market){const p=marketControlPrice(m.price,data);if(p!==m.price){m.price=p;m.level=1;m.prediction=null;m.compared=false;m.explain=false;}}
+ const source=JSON.stringify([state.survey.values,data.demand,data.supply]);if(state.marketSource===source)return;
+ const prices=[...new Set([data.min,...PRICES.filter(p=>p>=data.min&&p<=data.max),data.max])];
+ const shortage=prices.find(p=>lessonMarketAt(p,data).qd>lessonMarketAt(p,data).qs)??data.min;
+ const surplus=prices.slice().reverse().find(p=>lessonMarketAt(p,data).qd<lessonMarketAt(p,data).qs)??data.max;
+ state.market=[data.min,shortage,surplus,lessonEquilibria(data)[0]?.p??data.min].map(p=>freshMarket(marketControlPrice(p,data)));
+ state.marketSource=source;
+}
+function equilibriumText(e){return e.endP?`균형 구간 <strong>${fmt(e.p)}~${fmt(e.endP)}원</strong>`:`균형 가격 <strong>${fmt(e.p)}원</strong> · 균형 거래량 <strong>${fmt(e.q)}개</strong>`;}
+// Keep hint=2 as both guides for older saved records; 3 means price only.
 const freshPlot=()=>({row:0,points:[],candidate:null,hint:0,line:false,compare:false,explain:false,message:''});
 const freshMarket=p=>({price:p,level:0,explain:false,history:[],prediction:null,compared:false});
-function fresh(){return {version:1,session:0,scene:[0,0,0,0],survey:{size:24,mode:'class',values:[null,null,null,null,null],row:0},dplot:freshPlot(),supplyRows:[false,false,false,false,false],supplyRow:0,splot:freshPlot(),market:[freshMarket(1000),freshMarket(1000),freshMarket(5000),freshMarket(3000)],shift:{d:{...freshPlot(),scenario:'dplus',table:false},s:{...freshPlot(),scenario:'splus',table:false}},distinguish:{mode:'price',level:0,explain:false},newMarket:{scenario:'dplus',...freshMarket(3000),stage:0,predP:null,predQ:null},summary:{shown:false}};}
+function fresh(){return {version:1,session:0,scene:[0,0,0,0],activityScenes:[0,2,0],survey:{size:24,mode:'class',values:[null,null,null,null,null],row:0},dplot:freshPlot(),supplyRows:[false,false,false,false,false],supplyRow:0,splot:freshPlot(),market:[freshMarket(1000),freshMarket(1000),freshMarket(5000),freshMarket(3000)],shift:{d:{...freshPlot(),scenario:'dplus',table:false},s:{...freshPlot(),scenario:'splus',table:false}},distinguish:{mode:'price',level:0,explain:false},newMarket:{scenario:'dplus',...freshMarket(3000),stage:0,predP:null,predQ:null},summary:{shown:false}};}
 let state=fresh(),storageOK=true;
+const surveyDrafts=new Map();
 let demandMotionFrame=0,pendingDemandMotion=false,forceDemandMotion=false;
+let pointMotionFrame=0,pendingPointMotion=null;
+let marketGraphObserver=null,marketGraphOptions=null,marketDialogContext=null,marketPriceDraft=null;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch{storageOK=false;}}
 function validState(v){
+ if(v?.marketSource!==undefined&&(typeof v.marketSource!=='string'||v.marketSource.length>500))return false;
+ if(v?.activityScenes!==undefined&&(!Array.isArray(v.activityScenes)||v.activityScenes.length!==3||!v.activityScenes.every((n,i)=>Number.isInteger(n)&&n>=[0,2,0][i]&&n<=[1,3,3][i])))return false;
  if(v?.supplyNote&&typeof v.supplyNote.explain!=='boolean')return false;
  if(!v||v.version!==1||!Number.isInteger(v.session)||v.session<0||v.session>3||!Array.isArray(v.scene)||v.scene.length!==4)return false;
  if(!v.scene.every((n,i)=>Number.isInteger(n)&&n>=0&&n<[4,4,3,2][i]))return false;
  const sv=v.survey;if(!sv||!['class','example'].includes(sv.mode)||!Number.isInteger(sv.size)||sv.size<5||sv.size>60||!Number.isInteger(sv.row)||sv.row<0||sv.row>4||!Array.isArray(sv.values)||sv.values.length!==5||!sv.values.every(n=>n===null||(Number.isInteger(n)&&n>=0&&n<=sv.size)))return false;
- const plot=p=>p&&Number.isInteger(p.row)&&p.row>=0&&p.row<5&&Array.isArray(p.points)&&p.points.length<=5&&new Set(p.points).size===p.points.length&&p.points.every(n=>Number.isInteger(n)&&n>=0&&n<5)&&Number.isInteger(p.hint)&&p.hint>=0&&p.hint<=2&&typeof p.line==='boolean'&&typeof p.explain==='boolean'&&typeof p.compare==='boolean'&&typeof p.message==='string'&&p.message.length<500&&(p.candidate===null||(p.candidate&&Number.isInteger(p.candidate.q)&&p.candidate.q>=0&&p.candidate.q<=60&&PRICES.includes(p.candidate.p)));
- const mk=m=>m&&Number.isFinite(m.price)&&m.price>=1000&&m.price<=5000&&m.price%500===0&&Number.isInteger(m.level)&&m.level>=0&&m.level<=3&&Array.isArray(m.history)&&m.history.length<200&&m.history.every(h=>h&&Number.isFinite(h.price)&&h.price>=1000&&h.price<=5000&&h.price%500===0&&Number.isInteger(h.level)&&h.level>=0&&h.level<=3)&&typeof m.explain==='boolean'&&typeof m.compared==='boolean'&&(m.prediction===null||['up','same','down'].includes(m.prediction));
+ const plot=p=>p&&Number.isInteger(p.row)&&p.row>=0&&p.row<5&&Array.isArray(p.points)&&p.points.length<=5&&new Set(p.points).size===p.points.length&&p.points.every(n=>Number.isInteger(n)&&n>=0&&n<5)&&Number.isInteger(p.hint)&&p.hint>=0&&p.hint<=3&&typeof p.line==='boolean'&&typeof p.explain==='boolean'&&typeof p.compare==='boolean'&&typeof p.message==='string'&&p.message.length<500&&(p.candidate===null||(p.candidate&&Number.isInteger(p.candidate.q)&&p.candidate.q>=0&&p.candidate.q<=60&&PRICES.includes(p.candidate.p)));
+ const mk=m=>m&&Number.isFinite(m.price)&&m.price>=1000&&m.price<=5000&&Number.isInteger(m.level)&&m.level>=0&&m.level<=3&&Array.isArray(m.history)&&m.history.length<200&&m.history.every(h=>h&&Number.isFinite(h.price)&&h.price>=1000&&h.price<=5000&&Number.isInteger(h.level)&&h.level>=0&&h.level<=3)&&typeof m.explain==='boolean'&&typeof m.compared==='boolean'&&(m.prediction===null||['up','same','down'].includes(m.prediction));
  if(!plot(v.dplot)||!plot(v.splot)||!Array.isArray(v.supplyRows)||v.supplyRows.length!==5||!v.supplyRows.every(n=>typeof n==='boolean')||!Number.isInteger(v.supplyRow)||v.supplyRow<0||v.supplyRow>4)return false;
  if(!v.shift||!plot(v.shift.d)||!plot(v.shift.s)||!['dplus','dminus'].includes(v.shift.d.scenario)||!['splus','sminus'].includes(v.shift.s.scenario)||typeof v.shift.d.table!=='boolean'||typeof v.shift.s.table!=='boolean')return false;
  if(!Array.isArray(v.market)||v.market.length!==4||!v.market.every(mk))return false;
@@ -132,119 +224,224 @@ function validState(v){
 }
 try{const cached=JSON.parse(localStorage.getItem(KEY)||'null');if(validState(cached))state=cached;}catch{storageOK=false;}
 const scenes=[['구매 의향','수요 점 찍기','판매 계획','공급 점 찍기'],['같은 가격, 두 수량','초과 수요 해결','초과 공급 해결','시장 균형'],['수요 새로 그리기','공급 새로 그리기','두 변화 구별'],['새 균형 찾기','네 가지 변화 비교']];
-const sessionNames=['곡선 도출','시장 균형','곡선 새로 쓰기','새 균형 비교'];
-const ice=`<svg viewBox="0 0 140 170" fill="none" aria-hidden="true"><path d="M35 83h70L70 158 35 83Z" fill="#FFF5D8" stroke="#6B4C93" stroke-width="4"/><path d="m43 101 43 20m-34-35 43 20m-37 27 18-38m-27 20 18-29" stroke="#C6AE72" stroke-width="2"/><path d="M36 85c-26-9-16-40 2-43-3-29 40-41 48-13 28-4 42 36 19 54-19 8-43 8-69 2Z" fill="#D9C9EB" stroke="#6B4C93" stroke-width="4"/><path d="M47 47c6-7 19-7 25 0M75 64c8-5 16-3 19 2" stroke="#6B4C93" stroke-width="3" stroke-linecap="round"/><circle cx="67" cy="22" r="7" fill="#F07870"/></svg>`;
+const activities=[
+ {name:'수요곡선 만들기',session:0,first:0,last:1},
+ {name:'공급곡선 만들기',session:0,first:2,last:3},
+ {name:'시장 균형 확인하기',session:1,first:0,last:3}
+];
 function legend(items){return `<div class="legend">${items.map(([kind,text])=>`<span><i class="swatch ${kind}" aria-hidden="true"></i>${text}</span>`).join('')}</div>`;}
-function feedback(text,cls=''){return `<div class="feedback ${cls}" role="status"><span>${text}</span></div>`;}
-function button(text,action,disabled=false,cls=''){return `<button class="${cls}" data-act="${action}" ${disabled?'disabled':''}>${text}</button>`;}
-function dataTable(values,{row=0,points=[],kind='d',shift=false,base=null,select=true}={}){return `<table class="table ${kind}" aria-label="${shift?'변화 후 ':''}${kind==='d'?'수요':'공급'}표"><thead><tr><th scope="col">가격(원)</th>${base?'<th scope="col">이전(개)</th>':''}<th scope="col">${shift?'새 수량':kind==='d'?'수요량':'공급량'}(개)</th></tr></thead><tbody>${PRICES.map((p,i)=>`<tr class="${row===i?'active':''}"><td>${select?`<button data-row="${i}" aria-label="${fmt(p)}원 행 선택" ${row===i?'aria-current="true"':''}>${fmt(p)}</button>`:fmt(p)}</td>${base?`<td>${base[i]}</td>`:''}<td>${select?`<button data-row="${i}" class="${points.includes(i)?'marked':''}" aria-label="${fmt(p)}원 ${values[i]===null?'미기록':values[i]+'개'} 행 선택">${values[i]===null?'—':fmt(values[i])}${points.includes(i)?' ✓':''}</button>`:values[i]===null?'—':fmt(values[i])}</td></tr>`).join('')}</tbody></table>`;}
+function feedback(text,cls=''){return `<div class="feedback ${cls}" role="${cls==='warning'?'alert':'status'}"><span>${text}</span></div>`;}
+function button(text,action,disabled=false,cls='',label=''){return `<button class="${cls}" data-act="${action}" ${label?`aria-label="${esc(label)}"`:''} ${disabled?'disabled':''}>${text}</button>`;}
+function dataTable(values,{row=0,points=[],kind='d',shift=false,base=null,select=true,edit=false}={}){
+ return `<table class="table ${kind}" aria-label="${shift?'변화 후 ':''}${kind==='d'?'수요':'공급'}표"><thead><tr><th scope="col">가격(원)</th>${base?'<th scope="col">이전(개)</th>':''}<th scope="col">${shift?'새 수량':kind==='d'?'수요량':'공급량'}(개)</th></tr></thead><tbody>${PRICES.map((price,i)=>`<tr ${select?`data-row="${i}"`:''} class="${row===i&&!edit?'active':''}"><td>${select?`<button data-row="${i}" ${edit?'class="price-edit" aria-haspopup="dialog"':`aria-pressed="${row===i}"`} aria-label="${fmt(price)}원, ${values[i]===null?'미기록':values[i]+'개'}${points.includes(i)?', 점 찍음':''}${edit?(values[i]===null?', 응답 입력':', 응답 수정'):''}">${edit?'':`<span class="row-state" aria-hidden="true">${points.includes(i)?'✓':row===i?'●':'○'}</span>`}${fmt(price)}</button>`:fmt(price)}</td>${base?`<td>${base[i]}</td>`:''}<td class="${points.includes(i)?'marked':''}">${values[i]===null?'—':fmt(values[i])}</td></tr>`).join('')}</tbody></table>`;
+}
+
 const GEOM={l:94,r:704,t:46,b:366,w:760,h:440};
 const demandAxisMax=()=>Math.max(30,Math.ceil(state.survey.size/5)*5);
-function graph({maxQ=28,tickStep=null,curves=[],dots=[],guides=[],shiftArrow=null,priceTrack=null,price=null,gap=null,equilibria=[],candidate=null,hint=0,target=null,interactive=false,xTitle='수량(개/하루)',stamp='',labelCurves=true}={}){
- const {l,r,t,b}=GEOM,x=q=>l+(r-l)*q/maxQ,y=p=>b-(b-t)*p/6000;
+function graph({maxQ=28,tickStep=null,curves=[],dots=[],guides=[],shiftArrow=null,priceTrack=null,price=null,gap=null,equilibria=[],candidate=null,hint=0,target=null,pointMotion=null,interactive=false,xTitle='수량(개/하루)',stamp='',labelCurves=true,geometry=GEOM,maxP=6000}={}){
+ const {l,r,t,b,w,h}=geometry,x=q=>l+(r-l)*q/maxQ,y=p=>b-(b-t)*p/maxP;
  const ticks=tickStep?Array.from({length:Math.floor(maxQ/tickStep)+1},(_,i)=>i*tickStep):Array.from({length:8},(_,i)=>Math.round(maxQ*i/7));
- let out=`<svg ${interactive?'id="plotSvg" class="plot-target" role="button" tabindex="0" aria-label="그래프에서 점 위치 선택. 키보드는 표 좌표 선택 버튼을 사용하세요."':'role="img" aria-label="가로축은 수량, 세로축은 가격인 경제 그래프"'} viewBox="0 0 760 440" xmlns="http://www.w3.org/2000/svg">`;
- out+=`<defs><clipPath id="plotClip"><rect x="${l-7}" y="${t-8}" width="${r-l+14}" height="${b-t+16}"/></clipPath></defs>`;
- for(const q of ticks)out+=`<line class="grid" x1="${x(q)}" x2="${x(q)}" y1="${t}" y2="${b}"/><text class="tick" x="${x(q)}" y="${b+33}" text-anchor="middle">${q}</text>`;
- for(let p=1000;p<=5000;p+=1000)out+=`<line class="grid" x1="${l}" x2="${r}" y1="${y(p)}" y2="${y(p)}"/><text class="tick" x="${l-12}" y="${y(p)+8}" text-anchor="end">${fmt(p)}</text>`;
- out+=`<path class="axis" fill="none" d="M${l} ${t-13}V${b}H${r+14}"/><path d="m${l-5} ${t-5} 5-9 5 9M${r+5} ${b-5}l9 5-9 5" fill="none" class="axis"/><text class="graph-label" x="${l}" y="24" text-anchor="middle">가격(원)</text><text class="graph-label" x="${r}" y="${b+68}" text-anchor="end">${xTitle}</text><text class="tick" x="${l-12}" y="${b+8}" text-anchor="end">0</text>`;
- if(stamp)out+=`<text x="${r-8}" y="30" text-anchor="end" fill="#655771" font-size="22">${esc(stamp)}</text>`;
+ let out=`<svg ${interactive?'id="plotSvg" class="plot-target" role="button" tabindex="0" aria-label="그래프에서 점 위치 선택. 키보드는 표 좌표 선택 버튼을 사용하세요."':'role="img" aria-label="가로축은 수량, 세로축은 가격인 경제 그래프"'} viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">`;
+ out+=`<defs><clipPath id="plotClip"><rect x="${l-12}" y="${t-12}" width="${r-l+24}" height="${b-t+24}"/></clipPath></defs>`;
+ for(const q of ticks)out+=`<line class="grid" x1="${x(q)}" x2="${x(q)}" y1="${t}" y2="${b}"/><text class="tick" x="${x(q)}" y="${b+(geometry.tickOffset??33)}" text-anchor="middle">${q}</text>`;
+ for(let p=1000;p<=5000;p+=1000)out+=`<line class="grid" x1="${l}" x2="${r}" y1="${y(p)}" y2="${y(p)}"/><text class="tick" data-price-tick="${p}" x="${l-12}" y="${y(p)+8}" text-anchor="end">${fmt(p)}</text>`;
+ out+=`<path class="axis" fill="none" d="M${l} ${t-13}V${b}H${r+14}"/><path d="m${l-5} ${t-5} 5-9 5 9M${r+5} ${b-5}l9 5-9 5" fill="none" class="axis"/><text class="graph-label" x="${l}" y="24" text-anchor="middle">가격(원)</text><text class="graph-label" x="${r}" y="${h-6}" text-anchor="end">${xTitle}</text><text class="tick" x="${l-12}" y="${b+8}" text-anchor="end">0</text>`;
+ if(stamp)out+=`<text x="${r-8}" y="30" text-anchor="end" fill="#5D6A80" font-size="22">${esc(stamp)}</text>`;
  out+='<g clip-path="url(#plotClip)">';
- if(price!==null)out+=`<line x1="${l}" x2="${r}" y1="${y(price)}" y2="${y(price)}" stroke="#6B4C93" stroke-width="2" stroke-dasharray="8 6"/>`;
+ if(price!==null)out+=`<line x1="${l}" x2="${r}" y1="${y(price)}" y2="${y(price)}" stroke="#2458ED" stroke-width="2" stroke-dasharray="8 6"/>`;
  curves.forEach(c=>{const values=c.values||PRICES.map(p=>curveQ(c.kind,p,c.delta||0)),indices=c.indices||[0,1,2,3,4],path=indices.filter(i=>values[i]!==null).map((i,n)=>`${n?'L':'M'}${x(values[i])},${y(PRICES[i])}`).join(' ');if(path)out+=`<path class="curve ${c.old?'old':c.kind}" d="${path}"/>`;});
  if(shiftArrow){
   const direction=shiftArrow.to>shiftArrow.from?1:-1,start=x(shiftArrow.from)+direction*10,end=x(shiftArrow.to)-direction*10,yp=y(shiftArrow.p),color=shiftArrow.kind==='d'?D:S;
   out+=`<g class="shift-arrow" role="img" aria-label="${shiftArrow.kind==='d'?'수요':'공급'} 곡선 ${direction>0?'오른쪽':'왼쪽'} 이동"><title>같은 가격에서 ${shiftArrow.kind==='d'?'수요량':'공급량'}이 ${direction>0?'증가':'감소'}하여 곡선이 ${direction>0?'오른쪽':'왼쪽'}으로 이동</title><path d="M${start} ${yp}H${end}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round"/><path d="M${end-direction*7} ${yp-5}L${end} ${yp}L${end-direction*7} ${yp+5}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>`;
  }
- guides.forEach(g=>{out+=`<path ${g.id?`id="${esc(g.id)}"`:""} class="coord-guide" fill="none" style="stroke:${g.color||'#6B4C93'}" d="M${l} ${y(g.p)}H${x(g.q)}V${b}"/>`;});
- if(target&&hint>=1){out+=`<line class="coord-guide" x1="${x(target.q)}" x2="${x(target.q)}" y1="${b}" y2="${hint>=2?y(target.p):t}"/>`;if(hint>=2)out+=`<line class="coord-guide" x1="${l}" x2="${x(target.q)}" y1="${y(target.p)}" y2="${y(target.p)}"/>`;}
- if(gap&&gap.qd!==gap.qs){const xa=x(Math.min(gap.qd,gap.qs)),xb=x(Math.max(gap.qd,gap.qs)),yp=y(gap.p);out+=`<rect x="${xa}" y="${yp-12}" width="${xb-xa}" height="24" fill="#F07870" opacity=".25"/><path d="M${xa} ${yp-10}v20M${xa} ${yp}H${xb}M${xb} ${yp-10}v20" stroke="#B4543D" stroke-width="3"/>`;}
- dots.forEach(v=>{const color=v.color||(v.kind==='s'?S:D);out+=`<circle ${v.id?`id="${esc(v.id)}"`:""} class="dot" cx="${x(v.q)}" cy="${y(v.p)}" r="${v.r||7}" fill="${color}"/>`;if(v.label)out+=`<text ${v.labelId?`id="${esc(v.labelId)}"`:""} x="${x(v.q)+10}" y="${y(v.p)-12}" fill="${color}" font-size="25" font-weight="800">${esc(v.label)}</text>`;});
- equilibria.forEach(e=>{out+=`<path d="M${l} ${y(e.p)}H${x(e.q)}V${b}" fill="none" stroke="${e.old?'#877B95':'#22654E'}" stroke-width="2" stroke-dasharray="5 5"/><circle cx="${x(e.q)}" cy="${y(e.p)}" r="9" fill="${e.old?'#877B95':'#22654E'}" stroke="white" stroke-width="3"/><text x="${x(e.q)+(e.old?-14:14)}" y="${y(e.p)+(e.old?29:-15)}" text-anchor="${e.old?'end':'start'}" fill="${e.old?'#655771':'#22654E'}" font-size="25" font-weight="800">${esc(e.label||'균형')}</text>`;});
- if(candidate)out+=`<circle cx="${x(candidate.q)}" cy="${y(candidate.p)}" r="11" fill="#FFF5D8" stroke="#6B4C93" stroke-width="3"/><path d="M${x(candidate.q)-16} ${y(candidate.p)}h32M${x(candidate.q)} ${y(candidate.p)-16}v32" stroke="#6B4C93" stroke-width="1.5"/>`;
+ guides.forEach(g=>{out+=`<path ${g.id?`id="${esc(g.id)}"`:""} class="coord-guide" fill="none" style="stroke:${g.color||'#2458ED'}" d="M${l} ${y(g.p)}H${x(g.q)}V${b}"/>`;});
+ if(target){const quantity=[1,2].includes(hint),price=hint>=2;if(quantity)out+=`<line class="coord-guide" x1="${x(target.q)}" x2="${x(target.q)}" y1="${b}" y2="${price?y(target.p):t}"/>`;if(price)out+=`<line class="coord-guide" x1="${l}" x2="${quantity?x(target.q):r}" y1="${y(target.p)}" y2="${y(target.p)}"/>`;}
+ if(gap&&gap.qd!==gap.qs){const xa=x(Math.min(gap.qd,gap.qs)),xb=x(Math.max(gap.qd,gap.qs)),yp=y(gap.p);out+=`<rect x="${xa}" y="${yp-12}" width="${xb-xa}" height="24" fill="#ED9B79" opacity=".25"/><path d="M${xa} ${yp-10}v20M${xa} ${yp}H${xb}M${xb} ${yp-10}v20" stroke="#B95032" stroke-width="3"/>`;}
+ dots.forEach(v=>{const color=v.color||(v.kind==='s'?S:D);out+=`<circle ${v.id?`id="${esc(v.id)}"`:""} ${v.hidden?'visibility="hidden"':''} class="dot" cx="${x(v.q)}" cy="${y(v.p)}" r="${v.r||7}" fill="${color}"/>`;if(v.label)out+=`<text ${v.labelId?`id="${esc(v.labelId)}"`:""} x="${x(v.q)+10}" y="${y(v.p)-12}" fill="${color}" font-size="25" font-weight="800">${esc(v.label)}</text>`;});
+ if(pointMotion){const color=pointMotion.kind==='d'?D:S;out+=`<g id="pointMotion" aria-hidden="true"><path id="pointMotionTrail" d="M${l} ${b}" fill="none" stroke="${color}" stroke-width="3" stroke-dasharray="6 5"/><circle id="pointMotionDot" cx="${l}" cy="${b}" r="9" fill="${color}" stroke="white" stroke-width="3"/></g>`;}
+ equilibria.forEach(e=>{out+=`<path d="M${l} ${y(e.p)}H${x(e.q)}V${b}" fill="none" stroke="${e.old?'#8A96A8':'#147064'}" stroke-width="2" stroke-dasharray="5 5"/><circle cx="${x(e.q)}" cy="${y(e.p)}" r="9" fill="${e.old?'#8A96A8':'#147064'}" stroke="white" stroke-width="3"/><text x="${x(e.q)+(e.old?-14:14)}" y="${y(e.p)+(e.old?29:-15)}" text-anchor="${e.old?'end':'start'}" fill="${e.old?'#5D6A80':'#147064'}" font-size="25" font-weight="800">${esc(e.label||'균형')}</text>`;});
+ if(candidate)out+=`<circle cx="${x(candidate.q)}" cy="${y(candidate.p)}" r="9" fill="#FFFFFF" stroke="${candidate.invalid?'#B95032':candidate.kind==='s'?S:D}" stroke-width="3"/>`;
  out+='</g>';
  if(priceTrack){
   const ax=l+18,top=y(3000)-18,bottom=y(3000)+18;
   out+=`<g aria-label="가격 축의 현재 가격"><circle id="movingPriceMarker" cx="${l}" cy="${y(priceTrack.p)}" r="7" fill="${priceTrack.color}" stroke="white" stroke-width="2"/><g class="price-rise-arrow" role="img" aria-label="가격 상승"><title>2,000원에서 4,000원으로 가격 상승</title><path d="M${ax} ${bottom}V${top}M${ax-5} ${top+7}L${ax} ${top}L${ax+5} ${top+7}" fill="none" stroke="${priceTrack.color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g></g>`;
  }
- if(gap&&gap.gap>0){const mx=(x(gap.qd)+x(gap.qs))/2;out+=`<text x="${mx}" y="${y(gap.p)-22}" text-anchor="middle" font-size="25" font-weight="800" fill="#93452F">${gap.type} ${fmt(gap.gap)}개</text>`;}
- if(labelCurves)curves.filter(c=>!c.old).forEach(c=>{const vals=c.values||PRICES.map(p=>curveQ(c.kind,p,c.delta||0)),ix=c.kind==='d'?0:4,qq=vals[ix];if(qq!==null&&!dots.some(v=>Math.abs(v.q-qq)<3&&Math.abs(v.p-PRICES[ix])<700))out+=`<text x="${Math.min(r-8,x(qq)+14)}" y="${y(PRICES[ix])-17}" font-size="26" font-weight="800" fill="${c.kind==='d'?D:S}">${c.label||(c.kind==='d'?'수요':'공급')}</text>`;});
+ if(gap&&gap.gap>0){const mx=(x(gap.qd)+x(gap.qs))/2;out+=`<text x="${mx}" y="${y(gap.p)-22}" text-anchor="middle" font-size="25" font-weight="800" fill="#9A452E">${gap.type} ${fmt(gap.gap)}개</text>`;}
+ if(labelCurves)curves.filter(c=>!c.old).forEach(c=>{const vals=c.values||PRICES.map(p=>curveQ(c.kind,p,c.delta||0)),ix=c.labelIndex??(c.kind==='d'?0:4),qq=vals[ix],right=qq>maxQ-4;if(qq!==null&&(c.labelIndex!==undefined||!dots.some(v=>Math.abs(v.q-qq)<3&&Math.abs(v.p-PRICES[ix])<700)))out+=`<text x="${right?x(qq)-14:Math.min(r-8,x(qq)+14)}" y="${y(PRICES[ix])-17}" text-anchor="${right?'end':'start'}" font-size="26" font-weight="800" fill="${c.kind==='d'?D:S}">${c.label||(c.kind==='d'?'수요':'공급')}</text>`;});
  out+='</svg>';return out;
 }
-function graphPanel(svg,items,caption=''){return `<div class="graph-area"><div class="graph-head">${legend(items)}${caption?`<span class="caption">${caption}</span>`:''}</div><div class="graph-wrap">${svg}</div></div>`;}
+function graphPanel(svg,items){return `<div class="graph-area"><div class="graph-head">${legend(items)}</div><div class="graph-wrap">${svg}</div></div>`;}
 function currentScene(){return state.scene[state.session];}
+function currentActivity(){return state.session===0?(currentScene()<2?0:1):2;}
+function restoreActivity(){if(state.session>1)state.session=0;}
 function currentPlot(){if(state.session===0)return currentScene()===1?state.dplot:state.splot;return state.shift[currentScene()===0?'d':'s'];}
 function plotKind(){return state.session===0?(currentScene()===1?'d':'s'):(currentScene()===0?'d':'s');}
 function plotValues(){const k=plotKind();if(state.session===0)return k==='d'?state.survey.values:SUPPLY;return (k==='d'?DEMAND:SUPPLY).map(n=>n+scenarios[state.shift[k].scenario].delta);}
 function isPlot(){return state.session===0&&[1,3].includes(currentScene())||state.session===2&&currentScene()<2;}
 function currentMarket(){return state.session===1?state.market[currentScene()]:state.newMarket;}
-function priceControl(p,scope,min=1000,max=5000){return `<div class="control">${button('−',scope+'Down',p<=min)}<strong>${fmt(p)}원</strong>${button('+',scope+'Up',p>=max)}</div>`;}
+function priceControl(p,scope,min=1000,max=5000){return `<div class="control">${button('−',scope+'Down',p<=min,'','가격 내리기')}<strong>${fmt(p)}원</strong>${button('+',scope+'Up',p>=max,'','가격 올리기')}</div>`;}
+function isSurvey(){return state.session===0&&currentScene()===0;}
+function isSupplyPlan(){return state.session===0&&currentScene()===2;}
+function activityScenes(){return state.activityScenes??(state.activityScenes=[0,2,state.scene[1]]);}
 function demandSurveyView(){
- const sv=state.survey,recorded=sv.values.filter(v=>v!==null).length;
- return {q:'가격이 오르면, 몇 명이 사려고 할까?',d:'같은 아이스크림을 자기 용돈으로 한 사람당 최대 한 개 삽니다. 가격별 질문은 각각 별개의 가정입니다.',
- body:`<div class="workspace"><div class="rail"><span class="tag">${sv.mode==='class'?'우리 반 실제 응답':'학습용 예시 응답'}</span><label class="small" for="classSize">학급 인원 <input id="classSize" type="number" min="5" max="60" step="1" value="${sv.size}" style="width:70px;font-size:20px;border:1px solid var(--line);border-radius:6px;padding:4px" ${sv.mode==='example'?'disabled':''}> 명</label>${priceControl(PRICES[sv.row],'survey')}
- <label class="number-entry" for="responseCount"><input id="responseCount" type="number" min="0" max="${sv.size}" step="1" value="${sv.values[sv.row]??''}" inputmode="numeric" placeholder="인원" aria-describedby="countNote"><span>명 = 개</span></label><p id="countNote" class="small">응답 인원 = 사려는 수량</p><div class="rail-actions">${button(sv.mode==='class'?'예시자료 사용':'실제 응답으로 전환','sample')}</div><p class="small">기록 ${recorded} / 5개 가격 · +로 가격 올리기</p></div><div class="survey-right"><div class="ice-art">${ice}</div><div style="width:100%">${dataTable(sv.values,{row:sv.row,kind:'d'})}</div></div></div>`,
- feed:sv.message?esc(sv.message):recorded?`표의 숫자는 <strong>각 가격에서 사려고 하는 수량</strong>입니다. 응답이 같아도 그대로 기록합니다.`:'1,000원부터 응답을 받아 봅시다. 그래프는 다음 장면에서 함께 그립니다.',action:'recordResponse',label:'응답 기록하기',disabled:false,explanation:CONCEPT.demandTerms};
+ const sv=state.survey,recorded=sv.values.filter(value=>value!==null).length;
+ return {q:'가격이 오르면, 몇 명이 사려고 할까?',d:'같은 아이스크림, 한 사람당 한 개.',
+ body:`<div class="workspace"><div class="survey-toolbar"><span class="tag">${sv.mode==='class'?'우리 반 실제 응답':'학습용 예시 응답'}</span><label class="survey-size" for="classSize">학급 인원 <input id="classSize" type="number" min="5" max="60" step="1" value="${sv.size}" required> 명</label>${button(sv.mode==='class'?'예시자료 사용':'실제 응답으로 전환','sample',false,'text-button')}</div><div class="survey-table-wrap">${dataTable(sv.values,{row:sv.row,kind:'d',edit:sv.mode==='class'})}</div></div>`,
+ feed:'',action:recorded===5?'advanceScene':'openSurvey',label:recorded===5?'수요 점 찍기 →':recorded?'조사 이어하기':'구매 의향 조사',disabled:false,explanation:CONCEPT.demandTerms};
 }
+function updateSurveyDialog(increased=false){
+ const sv=state.survey;
+ $('surveyStep').textContent=`${sv.row+1} / ${PRICES.length}`;
+ $('surveyPrice').textContent=fmt(PRICES[sv.row])+'원';
+ $('surveyPriceEnding').textContent=increased?'으로 올랐습니다.':'입니다.';
+ $('surveyQuestion').textContent=['몇 명이 살까요?','몇 명이 살까요?','이래도 살래요?','이래도 살래요? 진짜?','정말 살거에요?'][sv.row];
+ $('classSize').value=sv.size;$('classSize').setCustomValidity('');
+ $('responseCount').max=sv.size;$('responseCount').value=surveyDrafts.get(sv.row)??sv.values[sv.row]??'';$('responseCount').setCustomValidity('');
+ $('surveyPrevBtn').disabled=sv.row===0;
+ $('surveySubmitBtn').textContent=sv.row===PRICES.length-1?'기록하고 마치기':'기록하고 다음 →';
+}
+function openSurvey(row=null){
+ if(state.survey.mode==='example')act('sample');
+ const sv=state.survey,missing=sv.values.findIndex(value=>value===null);
+ sv.row=row??(missing<0?0:missing);sv.explain=false;
+ render();updateSurveyDialog();if(!$('surveyDialog').open)$('surveyDialog').showModal();
+ $('responseCount').focus();$('responseCount').select();
+}
+function updateSurveySize(report=true){
+ const sv=state.survey,input=$('classSize'),n=Number(input.value);
+ if(!Number.isInteger(n)||n<5||n>60||sv.values.some(value=>value!==null&&value>n)){input.setCustomValidity('인원은 5~60명이며 이미 기록한 응답 이상이어야 합니다.');if(report)input.reportValidity();return false;}
+ input.setCustomValidity('');if(sv.size!==n){sv.size=n;state.dplot.candidate=null;state.dplot.hint=0;state.dplot.message='';}$('responseCount').max=n;return true;
+}
+function recordSurveyResponse(){
+ if(!updateSurveySize())return false;
+ const sv=state.survey,input=$('responseCount'),value=input.value.trim(),n=Number(value);
+ if(value===''||!Number.isInteger(n)||n<0||n>sv.size){input.setCustomValidity(`0부터 ${sv.size}까지의 정수 인원을 입력해 주세요.`);input.reportValidity();return false;}
+ input.setCustomValidity('');if(sv.values[sv.row]!==n)state.dplot=freshPlot();sv.values[sv.row]=n;
+ surveyDrafts.delete(sv.row);
+ sv.message=`${fmt(PRICES[sv.row])}원에서 ${n}명이 사려고 한다고 기록했습니다.`;
+ return true;
+}
+
 function supplyPlanView(){
  const row=state.supplyRow,shown=state.supplyRows,count=shown.filter(Boolean).length;
- return {q:'판매 가격이 달라지면, 몇 개를 팔려고 할까?',d:'생산비와 생산 능력 등 다른 조건은 같습니다. 생산자들이 하루 동안 생산·판매하려는 가상 계획입니다.',body:`<div class="workspace"><div class="rail"><span class="tag s">가상 생산자들의 판매 계획</span>${priceControl(PRICES[row],'supply')}<p class="situation">가격이 높아지면 생산·판매하려는 유인은 어떻게 달라질까요?</p><p class="small">실제 판매 결과가 아닌 판매 계획입니다.</p><p class="progress">공개한 가격 ${count} / 5</p></div><div class="survey-right"><div class="ice-art">${ice}</div><div style="width:100%">${dataTable(SUPPLY.map((v,i)=>shown[i]?v:null),{row,kind:'s'})}<p class="intro-strip">판매하려는 계획과 실제 판매 결과를 구분합니다.</p></div></div></div>`,feed:shown[row]?`${fmt(PRICES[row])}원일 때 하루에 <strong>${SUPPLY[row]}개를 공급하려는 계획</strong>입니다.`:'같은 상품의 가격만 바꿉니다. 먼저 학생들의 예측을 들어 보세요.',action:shown[row]?'nextSupply':'showSupply',label:shown[row]?(count===5?'공급 점 찍기로':'다음 가격 선택'):'판매 계획 공개',disabled:false,explanation:CONCEPT.supplyTerms};
+ return {q:'판매 가격이 달라지면, 몇 개를 팔려고 할까?',d:'',body:`<div class="workspace"><div class="survey-toolbar"><span class="tag s">가상 판매 계획 · 하루 기준</span></div><div class="survey-table-wrap">${dataTable(SUPPLY.map((v,i)=>shown[i]?v:null),{row,kind:'s'})}</div></div>`,feed:'',action:count===5?'advanceScene':shown[row]?'nextSupply':'showSupply',label:shown[row]?(count===5?'공급 점 찍기 →':'다음 가격 선택 →'):`${fmt(PRICES[row])}원 판매 계획 공개`,disabled:false,explanation:CONCEPT.supplyTerms};
 }
 function plotView(){
  const k=plotKind(),p=currentPlot(),values=plotValues(),isShift=state.session===2,sc=isShift?scenarios[p.scenario]:null;
  const known=values.map((v,i)=>v!==null?i:null).filter(v=>v!==null),allDone=known.length>=2&&known.every(i=>p.points.includes(i)),target=values[p.row]===null?null:{q:values[p.row],p:PRICES[p.row]},maxQ=isShift||k==='s'?28:demandAxisMax();
- const ready=!isShift||p.table;
+ const ready=!isShift||p.table,canSelect=ready&&!!target&&!p.line&&!p.points.includes(p.row);
  const name=k==='d'?'수요':'공급',tone=k==='d'?D:S;
+ const motion=pendingPointMotion?.session===state.session&&pendingPointMotion.scene===currentScene()&&pendingPointMotion.row===p.row&&p.points.includes(p.row)&&!p.line?pendingPointMotion:null;
  let curves=[],dots=[];
  if(!ready){curves=[{kind:k}];}else{
-  dots=p.points.map(i=>({q:values[i],p:PRICES[i],kind:k}));
+  dots=p.points.map(i=>({q:values[i],p:PRICES[i],kind:k,...(motion&&i===motion.row?{id:'pointMotionFinal',hidden:true}:{})}));
   if(p.line)curves.push({kind:k,values,indices:p.points.slice().sort((a,b)=>a-b),label:isShift?'새 '+name:name});
   if(isShift&&p.compare)curves.unshift({kind:k,old:true});
  }
- const svg=graph({maxQ,tickStep:!isShift&&k==='d'?5:null,curves,dots,shiftArrow:isShift&&p.line&&p.compare?{kind:k,from:curveQ(k,3500),to:curveQ(k,3500,sc.delta),p:3500}:null,candidate:ready?p.candidate:null,target:ready?target:null,hint:ready?p.hint:0,interactive:ready&&!p.line,xTitle:name+'량(개/하루)',stamp:!ready?'변화 전':isShift?(p.compare?'변화 전 · 후 비교':'변화 후 새로 그리기'):''});
- let rail=isShift&&ready?'':`<span class="tag ${k}">${isShift?'같은 가격 · 새로운 계획':k==='d'?(state.survey.mode==='class'?'우리 반 실제 응답':'학습용 예시 응답'):'가상 생산자들의 계획'}</span>`;
- if(isShift)rail+=`<label class="sr-only" for="shiftScenario">변화 상황</label><select id="shiftScenario" class="scenario-select">${Object.entries(scenarios).filter(([,s])=>s.kind===k).map(([key,s])=>`<option value="${key}" ${p.scenario===key?'selected':''}>${s.title}</option>`).join('')}</select>`;
- if(ready){
-  rail+=dataTable(values,{row:p.row,points:p.points,kind:k,shift:isShift,base:isShift?(k==='d'?DEMAND:SUPPLY):null});
-
-  rail+=`<div class="rail-actions hint-buttons"><button data-act="hintX" aria-pressed="${p.hint>=1}">수량 위치</button><button data-act="hintY" aria-pressed="${p.hint>=2}">가격 높이</button>${!p.line?button('표 좌표 선택','selectCoordinate',!target||p.points.includes(p.row)):''}</div>`;
-  if(!target)rail+=`<p class="small">이전 장면에서 해당 가격의 응답을 기록하세요.</p>`;
- }else rail+=`<p class="situation">${sc.detail}</p><p class="small">상품 자체의 가격은 아직 바꾸지 않았습니다. 이전과 같은 각 가격에서 새 수량을 확인합니다.</p>`;
- let action='confirmPoint',label='점 확정',disabled=!p.candidate;
- if(!ready){action='showNewTable';label='변화 후 수량 보기';disabled=false;}
- else if(p.line&&isShift&&!p.compare){action='compareOld';label='이전 곡선 겹쳐 보기';disabled=false;}
- else if(p.line){action='none';label='선 연결 완료';disabled=true;}
- else if(allDone){action='connect';label='점 연결하기';disabled=false;}
- else if(p.points.includes(p.row)){action='nextPlotRow';label='다음 가격 선택';disabled=known.every(i=>p.points.includes(i));}
- let feed=p.message?esc(p.message):!ready?'먼저 상황 변화를 설명해 봅시다. 새 수량과 새 곡선은 아직 공개하지 않습니다.':p.candidate?`선택한 점은 <strong>${fmt(p.candidate.p)}원일 때 ${p.candidate.q}개</strong>라는 뜻입니다. 표와 맞는지 확인하세요.`:p.line&&isShift&&p.compare?`같은 가격에서 ${name}량이 ${sc.delta>0?'늘었습니다':'줄었습니다'}. 새 곡선이 이전보다 <strong>${sc.delta>0?'오른쪽':'왼쪽'}</strong>에 있습니다.`:p.line?`각 점의 의미를 연결한 ${name} 곡선입니다.`:target?`<strong>${fmt(target.p)}원일 때 ${target.q}개</strong>라는 선택을 점 하나로 표현해 봅시다.`:'실제 응답을 기록하거나, 구매 의향 장면에서 예시자료를 선택하세요.';
- if(!isShift&&k==='d'&&p.line){const ix=known.slice().sort((a,b)=>a-b),reversed=ix.some((v,j)=>j&&values[v]>values[ix[j-1]]);if(reversed)feed='실제 응답은 그대로 표시했습니다. 가격 이외에 생각한 조건이나 응답 이유가 달랐는지 확인해 봅시다.';else if(new Set(ix.map(i=>values[i])).size===1)feed='이 가격 범위에서는 사려는 수량이 같았습니다. 가격 범위와 학생들의 선택 이유를 함께 살펴봅시다.';}
- return {q:isShift?`조건이 바뀌면, ${name} 곡선을 어떻게 다시 그릴까?`:`표의 한 행을 ${name} 곡선의 점으로 바꾸면?`,d:isShift?'새 계획으로 점과 선을 완성한 다음, 이전 곡선을 겹쳐 비교합니다.':'수량은 가로 위치, 가격은 세로 높이입니다. 교사가 점을 확정한 뒤 따로 선을 연결합니다.',body:`<div class="workspace"><div class="rail">${rail}</div>${graphPanel(svg,isShift&&p.compare?[['old','이전 '+name],[k,'새 '+name]]:[[k,ready?'찍은 점 · '+name:'이전 '+name]],`${p.points.length}개 점${p.line?' · 선 연결됨':''}`)}</div>`,feed,action,label,disabled,explanation:isShift?(p.table?shiftConcept(sc):k==='d'?CONCEPT.demandFactors:CONCEPT.supplyFactors):k==='d'?CONCEPT.demandLaw:CONCEPT.supplyLaw};
+ const svg=graph({maxQ,tickStep:!isShift&&k==='d'?5:null,curves,dots,pointMotion:motion,shiftArrow:isShift&&p.line&&p.compare?{kind:k,from:curveQ(k,3500),to:curveQ(k,3500,sc.delta),p:3500}:null,candidate:canSelect&&p.candidate?{...p.candidate,kind:k,invalid:!!p.message}:null,target:ready?target:null,interactive:canSelect,xTitle:!isShift&&k==='d'?'수요량(개)':name+'량(개/하루)',stamp:''});
+ const left=ready?`<div class="plot-graph-heading"><h2>가격 선택</h2>${isShift?button('상황 바꾸기','chooseScenario',false,'text-button'):''}</div>${dataTable(values,{row:p.row,points:p.points,kind:k,shift:isShift,base:isShift?(k==='d'?DEMAND:SUPPLY):null})}${!target?'<p class="small">구매 의향에서 응답을 먼저 기록하세요.</p>':''}`:`<h2>상황 선택</h2>${scenarioButtons(k,p.scenario)}`;
+ const source=isShift?'':`<span>${k==='d'?(state.survey.mode==='class'?'우리 반 실제 응답':'학습용 예시 응답'):'가상 판매 계획'}</span>`;
+ const graphTitle=p.line?legend(isShift&&p.compare?[['old','이전 '+name],[k,'새 '+name]]:[[k,isShift?'새 '+name:name]]):`<h2>${!ready?'이전 곡선':'점 위치 선택'}</h2>`;
+ const graphBody=`<div class="graph-area"><div class="scenario-line plot-graph-header">${source}${graphTitle}</div><div class="graph-wrap">${svg}</div></div>`;
+ let action='confirmPoint',label='이 점 확정하기 →',disabled=!p.candidate;
+ if(!ready){action='showNewTable';label='새 수량 표 보기 →';disabled=false;}
+ else if(p.line&&isShift&&!p.compare){action='compareOld';label='이전 곡선과 비교하기 →';disabled=false;}
+ else if(p.line){action='advanceScene';label=nextSceneLabel();disabled=false;}
+ else if(!isShift&&k==='d'&&known.length<2){action='startSurvey';label='구매 의향 조사하기 →';disabled=false;}
+ else if(!target){action='nextPlotRow';label='기록한 가격 선택 →';disabled=false;}
+ else if(allDone){action='connect';label='점 연결하기 →';disabled=false;}
+ else if(p.points.includes(p.row)){action='nextPlotRow';label='다음 가격 고르기 →';disabled=known.every(i=>p.points.includes(i));}
+ const questions={dplus:'선호도가 높아지면, 수요 곡선은 어떻게 달라질까?',dminus:'선호도가 낮아지면, 수요 곡선은 어떻게 달라질까?',splus:'생산 기술이 발전하면, 공급 곡선은 어떻게 달라질까?',sminus:'원재료 가격이 오르면, 공급 곡선은 어떻게 달라질까?'};
+ return {q:isShift?questions[p.scenario]:`표의 한 행을 ${name} 곡선의 점으로 바꾸면?`,d:'',body:`<div class="plot-workspace"><div class="rail">${left}<div class="plot-coordinate-slot">${canSelect?button('표 좌표로 선택','selectCoordinate',false,'coordinate-alternative'):''}</div></div>${graphBody}</div>`,feed:'',action,label,disabled,explanation:isShift?(p.table?shiftConcept(sc):k==='d'?CONCEPT.demandFactors:CONCEPT.supplyFactors):k==='d'?CONCEPT.demandLaw:CONCEPT.supplyLaw};
 }
-function predictButtons(value,scope){const labels=scope==='market'?[['up','가격 상승'],['same','현재 가격<br>유지'],['down','가격 하락']]:[['up','상승'],['same','그대로'],['down','하락']];return `<div class="picks" role="group" aria-label="${scope==='market'?'시장가격 변화 예측':'균형 가격 변화 예측'}">${labels.map(([v,t])=>`<button data-predict="${scope}" data-value="${v}" aria-pressed="${value===v}" class="${value===v?'selected':''}">${t}</button>`).join('')}</div>`;}
+function predictButtons(value,scope){const labels=scope==='market'?[['up','가격 상승'],['same','가격 유지'],['down','가격 하락']]:[['up','상승'],['same','그대로'],['down','하락']];return `<div class="picks" role="group" aria-label="${scope==='market'?'시장가격 변화 예측':'균형 가격 변화 예측'}">${labels.map(([v,t])=>`<button data-predict="${scope}" data-value="${v}" aria-pressed="${value===v}" class="${value===v?'selected':''}">${t}</button>`).join('')}</div>`;}
+function marketReaction(m){return m.qd>m.qs?'수요자 경쟁 → <strong>가격 상승</strong>':'공급자 경쟁 → <strong>가격 하락</strong>'; }
 function marketMechanism(m){return m.type==='초과 수요'?CONCEPT.shortage:m.type==='초과 공급'?CONCEPT.surplus:CONCEPT.equilibrium;}
 function marketView(){
- const i=currentScene(),m=state.market[i],at=marketAt(m.price),eq=equilibrium(),show=m.level>=1,classified=m.level>=2,reason=m.level>=3,showEq=i===3&&classified;
- const q=['같은 가격에서 두 수량은 같을까?','사려는 수량이 더 많으면, 가격은 어떻게 될까?','팔려는 수량이 더 많으면, 가격은 어떻게 될까?','어느 가격에서 두 계획이 맞아떨어질까?'][i];
- const rail=`<span class="tag">가상 아이스크림 시장 · 하루 수량</span>${priceControl(m.price,'market')}<div class="market-numbers"><div class="metric"><span>수요량</span><b>${show?fmt(at.qd)+'개':'?'}</b></div><div class="metric s"><span>공급량</span><b>${show?fmt(at.qs)+'개':'?'}</b></div></div>${classified?`<p class="situation"><strong>${at.type}${at.gap?' '+fmt(at.gap)+'개':''}</strong></p>`:''}${i!==3?`<section class="market-prediction" aria-labelledby="marketPredictionTitle"><p class="prediction-title" id="marketPredictionTitle">지금 시장 상황에서 가격은 앞으로 어떻게 변화할까요?</p>${predictButtons(m.prediction,'market')}<p class="small">학생들의 예측을 선택하세요.</p></section>`:''}`;
- let action='marketReveal',label=['두 수량 읽기','차이 확인하기','시장 반응 보기'][m.level]||'가격 한 단계 조정',disabled=false;
- if(reason){action='marketStep';label=at.gap?'가격 한 단계 조정':'균형 도달';disabled=!at.gap;}
- const curves=[{kind:'d'},{kind:'s'}],dots=show?[{q:at.qd,p:m.price,kind:'d',label:'수요량'},{q:at.qs,p:m.price,kind:'s',label:'공급량'}]:[];
- let feed=!show?'수요 곡선과 공급 곡선을 같은 좌표에 놓았습니다. 현재 가격에서 두 수량을 읽어 봅시다.':!classified?`같은 ${fmt(m.price)}원에서 수요량은 ${fmt(at.qd)}개, 공급량은 ${fmt(at.qs)}개입니다.`:!reason?at.gap?`${at.type}는 <strong>${fmt(at.gap)}개</strong>입니다. 가격이 어느 방향으로 움직일지 이유를 들어 봅시다.`:`두 수량이 <strong>${fmt(at.qd)}개</strong>로 같습니다. 이 지점에 어떤 이름을 붙일까요?`:at.gap?marketMechanism(at):`수요량과 공급량이 ${fmt(eq.q)}개로 같습니다. <strong>균형 가격은 ${fmt(eq.p)}원, 균형 거래량은 ${fmt(eq.q)}개</strong>입니다.`;
- const concept=i===0?CONCEPT.market:i===3?CONCEPT.equilibrium:marketMechanism(at);
- if(m.explain)feed=concept;
- return {q,d:'학급 응답과 구분되는 공통 학습용 자료입니다. 가격 이외의 조건은 일정하게 둡니다.',body:`<div class="workspace"><div class="rail">${rail}</div>${graphPanel(graph({curves,dots,price:m.price,gap:classified?at:null,equilibria:showEq?[{...eq,label:'시장 균형'}]:[],stamp:'학습용 가상 자료'}),[['d','수요'],['s','공급']],show?'같은 가격의 두 점':'현재 가격에서 읽기')}</div>`,feed,action,label,disabled,explanation:concept};
+ const data=lessonMarket();
+ const curves=[{kind:'d',values:state.survey.values,indices:state.dplot.points.slice().sort((a,b)=>a-b)},{kind:'s',values:SUPPLY,indices:state.splot.points.slice().sort((a,b)=>a-b)}];
+ const graphOptions={maxQ:demandAxisMax(),tickStep:5,xTitle:'수량(개)',labelCurves:false};
+ marketGraphOptions=null;
+ if(!data){
+  const demandReady=state.dplot.line&&state.dplot.points.filter(i=>state.survey.values[i]!==null).length>=2,supplyReady=state.splot.line&&state.splot.points.length>=2;
+  const message=!demandReady?'수요곡선을 먼저 완성해 주세요.':!supplyReady?'공급곡선을 먼저 완성해 주세요.':'두 곡선에 공통 가격 구간이 없습니다. 수요곡선에 가격을 더 기록해 주세요.';
+  return {q:'내가 그린 두 곡선의 균형은?',d:'',body:`<div class="workspace"><div class="rail"><p>${message}</p></div>${graphPanel(graph({...graphOptions,curves:curves.filter(c=>c.kind==='d'?demandReady:supplyReady)}),[['d','수요'],['s','공급']])}</div>`,feed:'',action:!demandReady||supplyReady?'resumeDemand':'resumeSupply',label:!demandReady||supplyReady?'수요곡선 완성하기 →':'공급곡선 완성하기 →',disabled:false,explanation:''};
+ }
+ const m=currentMarket(),at=lessonMarketAt(m.price,data),nextPrice=lessonMarketStep(at.p,data),eqs=lessonEquilibria(data);
+ curves[0].labelIndex=data.demand.reduce((a,b)=>state.survey.values[a]>=state.survey.values[b]?a:b);curves[1].labelIndex=data.supply.at(-1);
+ const dots=at.gap?[{q:at.qd,p:at.p,kind:'d'},{q:at.qs,p:at.p,kind:'s'}]:m.compared?[]:[{q:at.qd,p:at.p,color:'#147064'}];
+ const equilibria=m.compared?eqs.map((e,i)=>e.endP?{p:(e.p+e.endP)/2,q:(e.q+e.endQ)/2,label:'균형 구간'}:{...e,label:eqs.length>1?'균형 '+(i+1):'시장 균형'}):[];
+ marketGraphOptions={...graphOptions,maxP:5500,labelCurves:true,curves,dots,price:at.p,equilibria};
+ let action='predictMarket',label='가격 반응 예측하기 →';
+ if(m.compared){action='finishMarket';label='활동 마무리 →';}
+ else if(m.level<=1||m.level===2&&!m.prediction){action='predictMarket';label='가격 반응 예측하기 →';}
+ else if(m.level===2){action='marketOutcome';label='가격 반응 확인하기 →';}
+ else if(m.level>=3){action=at.gap&&nextPrice!==at.p?'marketStep':'showEquilibria';label=action==='marketStep'?'가격 한 단계 조정하기 →':'균형 위치 확인하기 →';}
+ const quantities=`<div class="market-quantities" aria-label="현재 가격의 두 수량"><div class="market-quantity"><span>수요량</span><strong id="marketDemandValue">${fmt(at.qd)}개</strong></div><div class="market-quantity s"><span>공급량</span><strong id="marketSupplyValue">${fmt(at.qs)}개</strong></div></div>`;
+ const controls=`<div class="market-price-control" role="group" aria-label="시장 가격 조절"><div class="market-current-price"><label for="marketPriceSlider">가격</label><output id="marketPriceValue" for="marketPriceSlider">${fmt(at.p)}원</output></div><div class="market-slider-track"><input type="range" id="marketPriceSlider" class="market-price-slider" min="${data.min}" max="${data.max}" step="1000" value="${at.p}" aria-orientation="vertical" aria-valuetext="${fmt(at.p)}원" ${data.min===data.max?'disabled':''}></div></div>`;
+ return {q:'어느 쪽이 더 많을까요?',d:'',body:`<div class="market-experiment">${quantities}<div class="market-workspace"><div id="marketCanvas" class="market-canvas">${graph(marketGraphOptions)}</div>${controls}</div></div>`,feed:'',action,label,disabled:false,explanation:''};
 }
+function drawMarketGraph(){
+ const canvas=$('marketCanvas');if(state.session!==1||!canvas||!marketGraphOptions)return;
+ const {width,height}=canvas.getBoundingClientRect();if(width<=0||height<=0)return;
+ const w=Math.max(180,width),h=Math.max(260,height),geometry={w,h,l:64,r:w-30,t:46,b:h-58,tickOffset:26};
+ const tickStep=[5,10,20].find(step=>(w-94)/(marketGraphOptions.maxQ/step)>=28)||20;
+ canvas.innerHTML=graph({...marketGraphOptions,tickStep,geometry});
+ const data=lessonMarket(),control=$('marketPriceSlider')?.closest('.market-price-control');
+ if(data&&control){const y=p=>geometry.b-(geometry.b-geometry.t)*p/marketGraphOptions.maxP;control.style.setProperty('--price-track-top',y(data.max)-14+'px');control.style.setProperty('--price-track-height',y(data.min)-y(data.max)+28+'px');}
+}
+function fitMarketGraph(){
+ marketGraphObserver?.disconnect();marketGraphObserver=null;
+ const canvas=$('marketCanvas');if(state.session!==1||!canvas||!marketGraphOptions)return;
+ drawMarketGraph();if(typeof ResizeObserver!=='undefined'){marketGraphObserver=new ResizeObserver(drawMarketGraph);marketGraphObserver.observe(canvas);}
+}
+function paintMarketPrice(){
+ const at=lessonMarketAt(currentMarket().price);if(!at)return;
+ currentView=marketView();$('marketDemandValue').textContent=fmt(at.qd)+'개';$('marketSupplyValue').textContent=fmt(at.qs)+'개';$('marketPriceValue').textContent=fmt(at.p)+'원';
+ const slider=$('marketPriceSlider');slider.value=String(at.p);slider.setAttribute('aria-valuetext',fmt(at.p)+'원');
+ $('actionBtn').textContent=currentView.label;$('actionBtn').disabled=currentView.disabled;$('undoBtn').disabled=!canUndo();drawMarketGraph();
+}
+function previewMarketPrice(value){
+ const raw=Number(value),data=lessonMarket();if(state.session!==1||!data||value===''||!Number.isFinite(raw)||raw<data.min||raw>data.max)return false;
+ const p=marketControlPrice(raw,data),m=currentMarket();if(p===m.price)return false;
+ if(!marketPriceDraft){marketPriceChange(m,p);marketPriceDraft={market:m,source:state.marketSource,before:m.history.at(-1)};}
+ else{m.price=p;m.level=1;m.prediction=null;m.compared=false;m.explain=false;}
+ paintMarketPrice();return true;
+}
+function finishMarketPriceDrag(persist=true){
+ const draft=marketPriceDraft;if(!draft)return;
+ marketPriceDraft=null;
+ if(!state.market.includes(draft.market)||state.marketSource!==draft.source)return;
+ if(draft.market.price===draft.before.price){draft.market.history.pop();Object.assign(draft.market,draft.before);}
+ if(state.session===1&&currentMarket()===draft.market)paintMarketPrice();
+ if(persist){save();if(state.session===1&&currentMarket()===draft.market){const at=lessonMarketAt(draft.market.price);announce(`${fmt(at.p)}원에서 수요량 ${fmt(at.qd)}개, 공급량 ${fmt(at.qs)}개입니다.`);}}
+}
+function marketContext(){return state.session===1?JSON.stringify([state.marketSource,currentScene(),currentMarket().price]):null;}
+function closeMarketDialogs(){for(const id of ['marketPredictionDialog','marketResultDialog'])if($(id).open)$(id).close();marketDialogContext=null;}
+function openMarketPrediction(){
+ const at=lessonMarketAt(currentMarket().price);if(!at)return;
+ $('marketPredictionPrice').textContent='현재 가격 '+fmt(at.p)+'원';$('marketPredictionChoices').innerHTML=predictButtons(currentMarket().prediction,'market');marketDialogContext=marketContext();$('marketPredictionDialog').showModal();
+}
+function openMarketResult(equilibria=false){
+ const m=currentMarket(),at=lessonMarketAt(m.price);if(!at)return;
+ const eqs=lessonEquilibria(),next=lessonMarketStep(at.p),title=equilibria?'두 곡선의 균형':at.gap?at.type:'시장 균형';
+ $('marketResultTitle').textContent=title;
+ $('marketResultContent').innerHTML=equilibria?(eqs.length?eqs.map(e=>'<p>'+equilibriumText(e)+'</p>').join(''):'<p>기록한 가격 범위에는 두 곡선의 교차점이 없습니다.</p>'):`<p>수요량 <strong>${fmt(at.qd)}개</strong> · 공급량 <strong>${fmt(at.qs)}개</strong></p><p>${at.gap?`${at.type} <strong>${fmt(at.gap)}개</strong><br>${marketReaction(at)}`:equilibriumText({p:at.p,q:at.qd})}</p>`;
+ const button=$('marketResultAction');button.textContent=equilibria?'확인':at.gap&&next!==at.p?'가격 조정하기 →':'균형 위치 확인하기 →';button.dataset.act=equilibria?'closeMarketResult':at.gap&&next!==at.p?'marketStep':'showEquilibria';
+ marketDialogContext=marketContext();$('marketResultDialog').showModal();
+}
+
 function distinguishView(){
  const v=state.distinguish,factor=v.mode==='factor',shown=v.level>=1,explain=v.level>=2;
- const rail=`<span class="tag">가격 변화와 다른 조건 변화</span><div class="rail-actions">${button('상품 가격 변화','distPrice',false,!factor?'selected':'')}${button('상품 선호 변화','distFactor',false,factor?'selected':'')}</div>${shown&&!factor?`<div class="rail-actions">${button('움직임 다시 보기','replayDist')}</div>`:''}<p class="situation">${factor?'상품에 대한 선호도가 높아졌습니다. 비교하는 가격은 3,000원 그대로입니다.':'상품 가격만 2,000원에서 4,000원으로 올랐습니다. 선호 등 다른 조건은 같습니다.'}</p><p>기존 곡선의 다른 점을 읽을까요?<br>새로운 곡선이 필요할까요?</p>${explain?`<p class="notice">${factor?'같은 가격에서 수량이 달라져 새 수요 곡선이 필요합니다.':'가격별 계획은 그대로입니다. 기존 수요 곡선 위의 다른 점을 읽습니다.'}</p>`:''}`;
+ const rail=`<div class="rail-actions">${button('상품 가격 변화','distPrice',false,!factor?'selected':'')}${button('상품 선호 변화','distFactor',false,factor?'selected':'')}</div>${shown&&!factor?`<div class="rail-actions">${button('움직임 다시 보기','replayDist')}</div>`:''}<p class="situation">${factor?'선호도 상승 · 가격 3,000원 유지':'가격 2,000원 → 4,000원'}</p>`;
  const curves=[{kind:'d',old:factor&&shown}],dots=[];
  if(shown){
   const before=factor?{q:12,p:3000}:{q:16,p:2000},after=factor?{q:16,p:3000}:{q:8,p:4000};
   if(factor)curves.push({kind:'d',delta:4,label:'새 수요'});
-  dots.push({...before,kind:'d',label:'이전',color:'#877B95',id:'previousDemandDot'}, {...after,kind:'d',label:'변화 후',color:'#C43D43',id:'movingDemandDot',labelId:'movingDemandLabel'});
+  dots.push({...before,kind:'d',label:'이전',color:'#8A96A8',id:'previousDemandDot'}, {...after,kind:'d',label:'변화 후',color:'#C43D43',id:'movingDemandDot',labelId:'movingDemandLabel'});
  }
  const guides=dots.map((dot,i)=>({...dot,id:i===0?'previousDemandGuide':'movingDemandGuide'}));
- return {q:'가격이 달라진 것과, 계획이 달라진 것은 같을까?',d:'무엇이 변했고, 무엇을 일정하게 두었는지 먼저 설명해 봅시다.',body:`<div class="workspace"><div class="rail">${rail}</div>${graphPanel(graph({curves,dots,guides,priceTrack:shown&&!factor?{p:4000,color:'#C43D43'}:null,stamp:factor?'가격은 동일':'가격 이외의 조건은 동일'}),factor&&shown?[['old','이전 수요'],['d','새 수요']]:[['d','수요']])}</div>`,feed:explain?factor?'상품 가격 이외의 요인 변화 → 수요 자체의 증가·감소 → <strong>수요 곡선의 이동</strong>':'상품 자체의 가격 상승 → 수요량 16개에서 8개로 감소 → <strong>기존 수요 곡선 위의 이동</strong>':shown?'두 점은 같은 곡선에 있나요, 서로 다른 곡선에 있나요?':'먼저 학생들의 예측을 듣고 두 점의 위치를 공개하세요.',action:'distReveal',label:!shown?'두 점 비교하기':!explain?'차이 설명하기':'비교 완료',disabled:explain,explanation:CONCEPT.quantityChange};
+ return {q:'가격이 달라진 것과, 계획이 달라진 것은 같을까?',d:'',body:`<div class="workspace"><div class="rail">${rail}</div>${graphPanel(graph({curves,dots,guides,priceTrack:shown&&!factor?{p:4000,color:'#C43D43'}:null}),factor&&shown?[['old','이전 수요'],['d','새 수요']]:[['d','수요']])}</div>`,feed:explain?(factor?'수요 곡선 자체의 이동':'수요 곡선 위의 이동'):'',action:'distReveal',label:!shown?'두 점 비교하기':!explain?'차이 설명하기':'비교 완료',disabled:explain,explanation:CONCEPT.quantityChange};
 }
 function newMarketView(){
  const v=state.newMarket,sc=scenarios[v.scenario],d=sc.kind==='d'?sc.delta:0,s=sc.kind==='s'?sc.delta:0,eq=equilibrium(d,s),at=marketAt(v.price,d,s),revealed=v.stage>=1,reason=v.stage>=2,compared=v.compared;
@@ -257,63 +454,109 @@ function newMarketView(){
  else if(reason&&at.gap){action='newStep';label='가격 한 단계 조정';}
  else if(reason&&!at.gap&&!compared){action='newCompare';label='이전·새 균형 비교';}
  else if(compared){action='none';label='균형 비교 완료';disabled=true;}
- let feed=!revealed?'조건은 바뀌었지만, 가격은 아직 3,000원입니다. 새 균형을 먼저 예측해 봅시다.':!reason?`이전 가격에서 <strong>${at.type}${at.gap?' '+fmt(at.gap)+'개':''}</strong>가 나타났습니다. 가격은 어느 방향으로 움직일까요?`:at.gap?marketMechanism(at):!compared?`새 수요량과 공급량이 <strong>${fmt(eq.q)}개</strong>로 같아졌습니다. 이전 균형과 비교해 봅시다.`:`${sc.name} → 균형 가격 <strong>${eq.p>3000?'상승':'하락'}</strong>, 균형 거래량 <strong>${eq.q>12?'증가':'감소'}</strong>`;
- if(compared&&(v.predP||v.predQ)){const actualP=eq.p>3000?'up':'down',actualQ=eq.q>12?'up':'down';feed+=` · 예측 ${v.predP===actualP&&v.predQ===actualQ?'일치':'다시 비교하기'}`;}
- return {q:'새 계획이 생기면, 균형은 어디에서 다시 만날까?',d:'이전 가격에서 생긴 초과 수요·초과 공급을 확인하고, 가격을 조정한 뒤 두 균형을 비교합니다.',body:`<div class="workspace"><div class="rail">${rail}</div>${graphPanel(graph({curves,dots,price:revealed?v.price:null,gap:revealed?at:null,equilibria:eql,stamp:!revealed?'변화 전 균형':compared?'두 균형 비교':'조건 변화 후'}),revealed?[['old','이전 '+(sc.kind==='d'?'수요':'공급')],['d','수요'],['s','공급']]:[['d','수요'],['s','공급']])}</div>`,feed,action,label,disabled,explanation:equilibriumChangeConcept(sc)};
+ const feed=compared?`${sc.name} → 가격 <strong>${eq.p>3000?'상승':'하락'}</strong> · 거래량 <strong>${eq.q>12?'증가':'감소'}</strong>`:reason&&at.gap?marketReaction(at):'';
+ return {q:'새 계획이 생기면, 균형은 어디에서 다시 만날까?',d:'',body:`<div class="workspace"><div class="rail">${rail}</div>${graphPanel(graph({curves,dots,price:revealed?v.price:null,gap:revealed?at:null,equilibria:eql}),revealed?[['old','이전 '+(sc.kind==='d'?'수요':'공급')],['d','수요'],['s','공급']]:[['d','수요'],['s','공급']])}</div>`,feed,action,label,disabled,explanation:equilibriumChangeConcept(sc)};
 }
 function summaryView(){
  const shown=state.summary.shown;
  const rows=Object.values(scenarios).map(sc=>{const e=equilibrium(sc.kind==='d'?sc.delta:0,sc.kind==='s'?sc.delta:0);return `<tr><td><button data-summary-scenario="${Object.keys(scenarios).find(k=>scenarios[k]===sc)}">${sc.name}</button></td><td>${shown?(e.p>3000?'상승':'하락'):'?'}</td><td>${shown?(e.q>12?'증가':'감소'):'?'}</td></tr>`;}).join('');
- return {q:'곡선의 변화에서 가격과 거래량까지 설명할 수 있을까?',d:'각 상황에서 다른 곡선은 일정합니다. 이전 가격의 불일치와 가격 조정 과정을 근거로 설명해 봅시다.',body:`<div class="workspace"><div class="rail"><span class="tag">한 곡선만 변할 때</span><h2>설명의 연결 고리</h2><p class="situation">조건 변화 → 새 곡선<br>이전 가격에서 불일치<br>가격 조정 → 새 균형</p><p class="small">오른쪽에서 상황을 고르면 해당 실험으로 돌아갑니다. 두 곡선이 동시에 변하는 경우는 이 표로 단정하지 않습니다.</p></div><div class="summary-material">${`<table class="table wide-table"><thead><tr><th>변화 상황</th><th>균형 가격</th><th>균형 거래량</th></tr></thead><tbody>${rows}</tbody></table>`}<p class="endnote">“왜 그렇게 변하나요?”를 그래프의 점과 가격 조정으로 설명해 봅시다.</p></div></div>`,feed:shown?'화살표만 외우지 말고, 한 상황을 골라 <strong>이전 가격에서 무슨 일이 생겼는지</strong> 설명해 봅시다.':'결과를 공개하기 전에 네 가지 상황을 예측해 봅시다.',action:'summaryReveal',label:shown?'비교표 공개됨':'비교표 결과 공개',disabled:shown,explanation:'균형 가격과 균형 거래량은 수요 곡선과 공급 곡선이 만나는 지점에서 결정됩니다. 공급이 일정할 때는 수요의 변화를, 수요가 일정할 때는 공급의 변화를 살펴봅니다.'};
+ return {q:'곡선의 변화에서 가격과 거래량까지 설명할 수 있을까?',d:'',body:`<div class="workspace"><div class="rail"><span class="tag">한 곡선만 변할 때</span></div><div class="summary-material">${`<table class="table wide-table"><thead><tr><th>변화 상황</th><th>균형 가격</th><th>균형 거래량</th></tr></thead><tbody>${rows}</tbody></table>`}</div></div>`,feed:'',action:'summaryReveal',label:shown?'비교표 공개됨':'비교표 결과 공개',disabled:shown,explanation:'균형 가격과 균형 거래량은 수요 곡선과 공급 곡선이 만나는 지점에서 결정됩니다. 공급이 일정할 때는 수요의 변화를, 수요가 일정할 때는 공급의 변화를 살펴봅니다.'};
 }
 function view(){if(state.session===0)return [demandSurveyView,plotView,supplyPlanView,plotView][currentScene()]();if(state.session===1)return marketView();if(state.session===2)return currentScene()<2?plotView():distinguishView();return currentScene()===0?newMarketView():summaryView();}
 function explanationFlag(){if(state.session===0&&currentScene()===0)return state.survey;if(state.session===0&&currentScene()===2)return state.supplyNote||(state.supplyNote={explain:false});if(state.session===3&&currentScene()===1)return state.summary;if(isPlot())return currentPlot();if(state.session===1)return currentMarket();if(state.session===2)return state.distinguish;if(state.session===3&&currentScene()===0)return state.newMarket;return null;}
 function consolidateControls(){
+ $('controlContent').replaceChildren();
+ if(isPlot()||isSurvey()||isSupplyPlan()||state.session===1)return;
  const workspace=$('stage').querySelector('.workspace'),rail=workspace.querySelector('.rail');
  $('controlContent').replaceChildren(rail);
  const reading=document.createElement('div');reading.className='reading-panel';
  const strip=document.createElement('div');strip.className='source-strip';
  const tag=rail.querySelector('.tag');if(tag)strip.append(tag);
- if(state.session===0&&currentScene()===0){const note=rail.querySelector('#countNote'),progress=rail.lastElementChild;if(note)strip.append(note);if(progress&&progress!==note)strip.append(progress);}
- const progress=rail.querySelector('.progress');if(progress)strip.append(progress);
  if(strip.children.length)workspace.prepend(strip);
  const move=selector=>{rail.querySelectorAll(selector).forEach(el=>reading.append(el));};
- if(isPlot()){
-  move('table');
-  const label=document.createElement('div');label.className='row-picker-label';label.id='plotRowLabel';label.textContent='점으로 옮길 가격';
-  const choices=document.createElement('div');choices.id='plotRow';choices.className='price-row-buttons';choices.setAttribute('role','group');choices.setAttribute('aria-labelledby','plotRowLabel');
-  const p=currentPlot(),values=plotValues();choices.innerHTML=PRICES.map((price,i)=>`<button class="price-row-option" data-row="${i}" aria-pressed="${p.row===i}" aria-label="${fmt(price)}원, ${values[i]===null?'미기록':values[i]+'개'}${p.points.includes(i)?', 점 찍음':''}"><span>${fmt(price)}원</span><small>${values[i]===null?'미기록':values[i]+'개'}${p.points.includes(i)?' ✓':''}</small></button>`).join('');
-  if(state.session!==2||p.table){const hints=rail.querySelector('.hint-buttons');rail.insertBefore(label,hints);rail.insertBefore(choices,hints);}
- }
+
  if(state.session===1||state.session===3&&currentScene()===0){
   move('.market-numbers,.comparison,.situation');
   const price=rail.querySelector('.control');if(price&&!price.querySelector('button'))reading.prepend(price);
  }
  if(state.session===2&&currentScene()===2)move('.situation,.notice,p:not(.small)');
  if(state.session===3&&currentScene()===1){
-  while(rail.firstChild)reading.append(rail.firstChild);
+  const context=Array.from(rail.childNodes);rail.replaceChildren();
   rail.innerHTML=`<div id="summaryScenarioLabel" class="row-picker-label">상황 다시 실험하기</div><div id="summaryScenario" class="scenario-retry-buttons" role="group" aria-labelledby="summaryScenarioLabel">${Object.entries(scenarios).map(([key,sc])=>`<button data-summary-scenario="${key}">${sc.name}</button>`).join('')}</div>`;
+  rail.append(...context);
  }
  const visual=document.createElement('div');visual.className='visual-layout';
  if(reading.children.length){visual.classList.add('has-reading');visual.append(reading);}
  Array.from(workspace.children).filter(el=>!el.classList.contains('source-strip')).forEach(el=>visual.append(el));workspace.append(visual);
- workspace.querySelectorAll('table button').forEach(btn=>{const text=document.createElement('span');text.textContent=btn.textContent;text.className=btn.className;btn.replaceWith(text);});
+
+}
+function scenarioButtons(kind,selected){return `<div class="scenario-choices" role="group" aria-label="변화 상황">${Object.entries(scenarios).filter(([,sc])=>sc.kind===kind).map(([key,sc])=>`<button data-shift-scenario="${key}" aria-pressed="${selected===key}">${sc.title}</button>`).join('')}</div>`;}
+function nextSceneLabel(){
+ const i=currentActivity(),activity=activities[i];
+ return currentScene()<activity.last?`${scenes[state.session][currentScene()+1]} →`:i<activities.length-1?`${activities[i+1].name} →`:'활동 마무리 →';
+}
+function plotProgress(){
+ const p=currentPlot(),shift=state.session===2,ready=!shift||p.table,known=plotValues().flatMap((v,i)=>v===null?[]:[i]),done=known.length>=2&&known.every(i=>p.points.includes(i));
+ return {labels:shift?['상황 선택','표에서 점 찍기','선 연결','이전 곡선과 비교']:['표에서 점 찍기','선 연결','곡선 살펴보기'],step:shift?(!ready?0:!done?1:!p.line?2:3):(!done?0:!p.line?1:2)};
+}
+function renderActivityPath(){
+ const plotting=isPlot(),market=state.session===1;document.querySelector('.app').classList.toggle('market-mode',market);$('scenes').hidden=market;$('explainBtn').hidden=market;$('activityLayout').classList.toggle('market-layout',state.session===1);$('activityLayout').classList.toggle('plot-layout',plotting);$('activityLayout').classList.toggle('survey-layout',isSurvey()||isSupplyPlan());$('workflow').hidden=!plotting;
+ if(plotting){const {labels,step}=plotProgress();$('workflow').innerHTML=labels.map((label,i)=>`<li class="${i===step?'current':i<step?'complete':''}" ${i===step?'aria-current="step"':''}><b aria-hidden="true">${i<step?'✓':i+1}</b><span>${label}</span></li>`).join('');}
+ $('description').hidden=!currentView.d;$('prevBtn').hidden=plotting||market;$('nextBtn').hidden=plotting||market||currentView.action==='advanceScene';
+ $('undoBtn').hidden=isSurvey();
+ if(market)$('undoBtn').textContent='되돌리기';
+ if(isSupplyPlan())$('undoBtn').textContent='판매 계획 숨기기';
+ $('actionStatus').hidden=!plotting;
+ if(plotting){const p=currentPlot();
+  $('actionStatus').innerHTML=p.candidate?`<strong>${p.candidate.q}개 · ${fmt(p.candidate.p)}원</strong>`:'';
+  $('undoBtn').textContent=p.candidate?'다시 고르기':p.compare?'이전 곡선 숨기기':p.line?'선 연결 되돌리기':p.points.length?'마지막 점 되돌리기':'되돌리기';
+ }
+ $('nextBtn').textContent=nextSceneLabel();
 }
 let currentView=null;
-function render(focus=false){
+function render(focus=false,persist=true){
+ finishMarketPriceDrag(false);
+ const previousFocus=document.activeElement,focusKey=previousFocus?.id?'#'+previousFocus.id:previousFocus?.matches?.('button')?'button'+['data-act','data-row','data-predict','data-value','data-session','data-scene'].filter(a=>previousFocus.hasAttribute(a)).map(a=>'['+a+'="'+previousFocus.getAttribute(a)+'"]' ).join(''):null;
  if(demandMotionFrame){cancelAnimationFrame(demandMotionFrame);demandMotionFrame=0;}
- state.session=Math.max(0,Math.min(3,state.session));const v=view();currentView=v;
- $('sessions').innerHTML=sessionNames.map((name,i)=>`<button class="session" data-session="${i}" aria-current="${state.session===i}" aria-label="${i+1}차시 ${name}"><b>${i+1}</b>${name}</button>`).join('');
- $('scenes').innerHTML=scenes[state.session].map((name,i)=>`<button class="scene" data-scene="${i}" ${currentScene()===i?'aria-current="step"':''}>${name}</button>`).join('');
+ if(pointMotionFrame){cancelAnimationFrame(pointMotionFrame);pointMotionFrame=0;}
+ restoreActivity();prepareLessonMarket();activityScenes()[currentActivity()]=currentScene();const v=view();currentView=v;
+ const active=currentActivity(),activity=activities[active];
+ $('sessions').innerHTML=activities.map(({name},i)=>`<button class="session" data-session="${i}" aria-current="${active===i}" aria-label="${i+1}단계 ${name}"><b>${i+1}</b>${name}</button>`).join('');
+ $('scenes').innerHTML=scenes[state.session].map((name,i)=>i>=activity.first&&i<=activity.last?`<button class="scene" data-scene="${i}" ${currentScene()===i?'aria-current="step"':''}>${name}</button>`:'').join('');
  $('question').textContent=v.q;$('description').textContent=v.d;
- const e=explanationFlag();$('stage').innerHTML=v.body+feedback(e?.explain?v.explanation:v.feed,e?.explain?'':v.action==='recordResponse'?'wait':'');
+ const e=explanationFlag(),message=e?.explain?v.explanation:v.feed;
+ $('stage').innerHTML=v.body+feedback(message||'',v.error?'warning':'');$('stage').querySelector('.feedback').hidden=!message;
  consolidateControls();
- $('counter').textContent=`${state.session+1}차시 · ${currentScene()+1}/${scenes[state.session].length}`;
- $('prevBtn').disabled=currentScene()===0;$('nextBtn').textContent=currentScene()===scenes[state.session].length-1?'차시 마무리':'다음';
+ $('prevBtn').disabled=active===0&&currentScene()===0;
  $('actionBtn').textContent=v.label;$('actionBtn').disabled=v.disabled;
  $('explainBtn').disabled=!v.explanation;$('explainBtn').textContent=e?.explain?'설명 접기':'설명 보기';$('explainBtn').setAttribute('aria-pressed',String(!!e?.explain));
  $('undoBtn').disabled=!canUndo();$('undoBtn').textContent=isPlot()?'점·공개 되돌리기':'한 단계 되돌리기';
- bindPlot();save();playDemandPriceMotion();if(focus)$('question').focus({preventScroll:true});
+ renderActivityPath();fitMarketGraph();if(marketDialogContext!==null&&marketDialogContext!==marketContext())closeMarketDialogs();bindPlot();if(persist)save();playDemandPriceMotion();playPointMotion();if(focus){$('question').focus({preventScroll:true});window.scrollTo({top:0,left:0,behavior:'auto'});}else if(focusKey&&previousFocus&&!document.contains(previousFocus))document.querySelector(focusKey)?.focus({preventScroll:true});
+ if(v.error){const warning=$('stage').querySelector('.feedback');if(warning.getBoundingClientRect().bottom>document.querySelector('.footer').getBoundingClientRect().top)warning.scrollIntoView({block:'nearest'});}
+}
+function pointMotionAt(m,elapsed){
+ const ease=n=>1-Math.pow(1-Math.max(0,Math.min(1,n)),3),{l,r,t,b}=GEOM;
+ return {x:l+(r-l)*m.q/m.maxQ*ease((elapsed-820)/800),y:b-(b-t)*m.p/6000*ease(elapsed/600),phase:elapsed<820?'price':'quantity',done:elapsed>=1820};
+}
+function playPointMotion(){
+ const motion=pendingPointMotion;pendingPointMotion=null;if(!motion)return;
+ const marker=$('pointMotionDot'),trail=$('pointMotionTrail'),final=$('pointMotionFinal'),overlay=$('pointMotion');
+ if(!marker||!trail||!final||!overlay)return;
+ const restoreFocus=document.activeElement===$('actionBtn'),row=$('stage').querySelector(`tr[data-row="${motion.row}"]`),tick=$('stage').querySelector(`[data-price-tick="${motion.p}"]`),svg=overlay.closest('svg');
+ const finish=()=>{final.removeAttribute('visibility');overlay.remove();row?.classList.remove('motion-price','motion-quantity');tick?.classList.remove('motion-price-tick');svg.removeAttribute('aria-busy');$('actionBtn').disabled=currentView.disabled;if(restoreFocus&&document.activeElement===document.body)$('actionBtn').focus({preventScroll:true});pointMotionFrame=0;};
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){finish();return;}
+ row?.style.setProperty('--motion-ink',motion.kind==='d'?D:S);tick?.style.setProperty('--motion-ink',motion.kind==='d'?D:S);
+ row?.classList.add('motion-price');tick?.classList.add('motion-price-tick');svg.setAttribute('aria-busy','true');$('actionBtn').disabled=true;
+ let started=null;
+ const frame=now=>{
+  if(started===null)started=now;const elapsed=now-started,pos=pointMotionAt(motion,elapsed);
+  marker.setAttribute('cx',pos.x);marker.setAttribute('cy',pos.y);
+  marker.setAttribute('r',elapsed>1620?7+3*Math.sin(Math.PI*Math.min(1,(elapsed-1620)/200)):9);
+  trail.setAttribute('d',`M${GEOM.l} ${GEOM.b}V${pos.y}H${pos.x}`);
+  if(pos.phase==='quantity')row?.classList.add('motion-quantity');
+  if(pos.done){finish();announce(`${fmt(motion.p)}원 높이에서 ${motion.q}개 위치에 점을 찍었습니다.`);}else pointMotionFrame=requestAnimationFrame(frame);
+ };
+ pointMotionFrame=requestAnimationFrame(frame);
 }
 function playDemandPriceMotion(){
  const requested=pendingDemandMotion,force=forceDemandMotion;pendingDemandMotion=false;forceDemandMotion=false;
@@ -338,8 +581,24 @@ function playDemandPriceMotion(){
  demandMotionFrame=requestAnimationFrame(frame);
 }
 function announce(text){$('announcement').textContent=text;}
-function navigateSession(i){state.session=i;render(true);}
-function navigateScene(i){state.scene[state.session]=Math.max(0,Math.min(scenes[state.session].length-1,i));render(true);}
+function navigateSession(i){
+ finishMarketPriceDrag(false);
+ const activity=activities[i];if(!activity)return;
+ if(currentActivity()!==i){const remembered=activityScenes();remembered[currentActivity()]=currentScene();state.session=activity.session;state.scene[state.session]=remembered[i];}
+ render(true);
+}
+function navigateScene(i){finishMarketPriceDrag(false);activityScenes()[currentActivity()]=currentScene();state.scene[state.session]=Math.max(0,Math.min(scenes[state.session].length-1,i));render(true);}
+function previousScene(){
+ if(currentScene()>0)navigateScene(currentScene()-1);
+ else if(state.session===1){state.session=0;navigateScene(3);}
+}
+function nextScene(finish=false){
+ if(!finish&&currentScene()<scenes[state.session].length-1){navigateScene(currentScene()+1);return;}
+ if(state.session===0){navigateSession(2);return;}
+ $('endTitle').textContent='시장 균형을 설명해 봅시다';
+ $('endQuestions').innerHTML='<ul>'+['초과 수요와 초과 공급은 같은 가격에서 무엇을 비교한 것인가요?','가격이 조정될 때 두 곡선 자체가 바뀌나요?','시장 균형에서 같아지는 두 수량은 무엇인가요?'].map(q=>'<li>'+q+'</li>').join('')+'</ul>';
+ $('endDialog').showModal();
+}
 function bindPlot(){
  const svg=$('plotSvg');if(!svg)return;
  svg.addEventListener('click',event=>{
@@ -352,18 +611,19 @@ function bindPlot(){
  svg.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act('selectCoordinate');$('actionBtn').focus({preventScroll:true});}});
 }
 function canUndo(){
- if(isPlot()){const p=currentPlot();return !!(p.candidate||p.compare||p.line||p.points.length||p.hint||state.session===2&&p.table);}
- if(state.session===0)return currentScene()===0?state.survey.values.some(n=>n!==null):state.supplyRows.some(Boolean);
- if(state.session===1){const m=currentMarket();return m.level>0||m.history.length>0;}
+ if(isPlot()){const p=currentPlot();return !!(p.candidate||p.compare||p.line||p.points.length||state.session===2&&p.table);}
+ if(state.session===0)return currentScene()===0?state.survey.values.some(n=>n!==null):state.supplyRows[state.supplyRow];
+ if(state.session===1){const m=currentMarket();return m.compared||m.level>1||m.history.length>0;}
  if(state.session===2)return state.distinguish.level>0;
  if(currentScene()===1)return state.summary.shown;
  const n=state.newMarket;return n.compared||n.history.length>0||n.stage>0;
 }
 function undo(){
- if(isPlot()){const p=currentPlot();if(p.candidate)p.candidate=null;else if(p.compare)p.compare=false;else if(p.line)p.line=false;else if(p.points.length)p.row=p.points.pop();else if(p.hint)p.hint=0;else if(state.session===2)p.table=false;p.message='';p.explain=false;}
+ finishMarketPriceDrag(false);
+ if(isPlot()){const p=currentPlot();if(p.candidate)p.candidate=null;else if(p.compare)p.compare=false;else if(p.line)p.line=false;else if(p.points.length)p.row=p.points.pop();else if(state.session===2)p.table=false;p.message='';p.explain=false;}
  else if(state.session===0&&currentScene()===0){const sv=state.survey;sv.values[sv.row]=null;state.dplot=freshPlot();}
  else if(state.session===0){state.supplyRows[state.supplyRow]=false;}
- else if(state.session===1){const m=currentMarket();if(m.level>0)m.level--;else if(m.history.length){const prev=m.history.pop();m.price=prev.price;m.level=prev.level;}m.explain=false;}
+ else if(state.session===1){const m=currentMarket();if(m.compared)m.compared=false;else if(m.level>1)m.level--;else if(m.history.length){const prev=m.history.pop();m.price=marketControlPrice(prev.price);const exact=m.price===prev.price;m.level=exact?prev.level:1;m.prediction=exact&&['up','same','down'].includes(prev.prediction)?prev.prediction:null;m.compared=exact&&prev.compared===true;}m.explain=false;}
  else if(state.session===2){state.distinguish.level=Math.max(0,state.distinguish.level-1);state.distinguish.explain=false;}
  else if(currentScene()===1)state.summary.shown=false;
  else{const n=state.newMarket;if(n.compared)n.compared=false;else if(n.history.length){const prev=n.history.pop();n.price=prev.price;n.stage=2;}else n.stage=Math.max(0,n.stage-1);n.explain=false;}
@@ -371,32 +631,38 @@ function undo(){
 }
 function shiftReset(kind,scenario){state.shift[kind]={...freshPlot(),scenario,table:false};}
 function newReset(scenario){state.newMarket={scenario,...freshMarket(3000),stage:0,predP:null,predQ:null};}
-function marketPriceChange(m,p){m.history.push({price:m.price,level:m.level});m.price=p;m.level=0;m.explain=false;m.prediction=null;m.compared=false;}
+function marketPriceChange(m,p){m.history.push({price:m.price,level:m.level,prediction:m.prediction,compared:m.compared});if(m.history.length>199)m.history.shift();m.price=p;m.level=1;m.explain=false;m.prediction=null;m.compared=false;}
 function act(name){
+ finishMarketPriceDrag(false);
+ if(name==='openSurvey'){openSurvey();return;}
+ if(name==='startSurvey'){navigateScene(0);openSurvey();return;}
+ if(name==='resumeDemand'||name==='resumeSupply'){navigateSession(name==='resumeDemand'?0:1);navigateScene(name==='resumeDemand'?1:state.supplyRows.every(Boolean)?3:2);return;}
+ if(name==='predictMarket'){openMarketPrediction();return;}
+ if(name==='closeMarketResult'){closeMarketDialogs();return;}
+ if(name==='marketOutcome'){if(!lessonMarket())return;currentMarket().level=3;render();openMarketResult();return;}
+ if(name==='showEquilibria'){if(!lessonMarket())return;closeMarketDialogs();currentMarket().compared=true;render();openMarketResult(true);return;}
+ if(name==='finishMarket'){nextScene(true);return;}
+ if(name==='advanceScene'){$('nextBtn').onclick();return;}
+ if(name==='chooseScenario'){$('scenarioChoices').innerHTML=scenarioButtons(plotKind(),currentPlot().scenario);$('scenarioDialog').showModal();return;}
  const sv=state.survey;
  if(name==='recordResponse'){
-  const input=$('responseCount'),value=input.value.trim(),n=Number(value);
-  if(value===''||!Number.isInteger(n)||n<0||n>sv.size){input.setCustomValidity(`0부터 ${sv.size}까지의 정수 인원을 입력해 주세요.`);input.reportValidity();return;}
-  input.setCustomValidity('');if(sv.values[sv.row]!==n)state.dplot=freshPlot();sv.values[sv.row]=n;sv.message=`${fmt(PRICES[sv.row])}원에서 ${n}명이 사려고 한다고 기록했습니다.`;
+  if(!recordSurveyResponse())return;
  }else if(name==='sample'){
-  if(sv.mode==='class'){sv.classBackup=sv.values.slice();sv.values=DEMAND.slice();sv.mode='example';sv.size=Math.max(20,sv.size);}else{sv.values=Array.isArray(sv.classBackup)&&sv.classBackup.length===5&&sv.classBackup.every(n=>n===null||Number.isInteger(n)&&n>=0&&n<=sv.size)?sv.classBackup.slice():[null,null,null,null,null];sv.mode='class';}sv.message='';state.dplot=freshPlot();
+  if(sv.mode==='class'){sv.classBackup=sv.values.slice();sv.classSizeBackup=sv.size;sv.values=DEMAND.slice();sv.mode='example';sv.size=Math.max(20,sv.size);}else{sv.values=Array.isArray(sv.classBackup)&&sv.classBackup.length===5&&sv.classBackup.every(n=>n===null||Number.isInteger(n)&&n>=0&&n<=sv.size)?sv.classBackup.slice():[null,null,null,null,null];if(Number.isInteger(sv.classSizeBackup)&&sv.classSizeBackup>=5&&sv.classSizeBackup<=60&&!sv.values.some(n=>n>sv.classSizeBackup))sv.size=sv.classSizeBackup;sv.mode='class';}sv.message='';state.dplot=freshPlot();
  }else if(name==='surveyUp'||name==='surveyDown'){sv.row=Math.max(0,Math.min(4,sv.row+(name==='surveyUp'?1:-1)));sv.message='';}
  else if(name==='supplyUp'||name==='supplyDown')state.supplyRow=Math.max(0,Math.min(4,state.supplyRow+(name==='supplyUp'?1:-1)));
  else if(name==='showSupply')state.supplyRows[state.supplyRow]=true;
  else if(name==='nextSupply'){const next=state.supplyRows.findIndex((v,i)=>!v&&i>state.supplyRow);if(state.supplyRows.every(Boolean))navigateScene(3);else state.supplyRow=next<0?state.supplyRows.findIndex(v=>!v):next;}
- else if(name==='hintX'||name==='hintY'){const p=currentPlot();p.hint=name==='hintX'?(p.hint===1?0:1):(p.hint===2?0:2);p.message='';}
  else if(name==='selectCoordinate'){const p=currentPlot(),vals=plotValues();if(vals[p.row]===null||p.points.includes(p.row))return;p.candidate={q:vals[p.row],p:PRICES[p.row]};p.message='';p.explain=false;}
  else if(name==='confirmPoint'){
   const p=currentPlot(),v=plotValues();if(!p.candidate)return;
-  if(p.candidate.q!==v[p.row]||p.candidate.p!==PRICES[p.row]){p.message=`선택한 위치는 ${fmt(p.candidate.p)}원·${p.candidate.q}개입니다. 표의 ${fmt(PRICES[p.row])}원·${v[p.row]}개와 비교해 다시 선택하세요.`;render();return;}
-  if(!p.points.includes(p.row))p.points.push(p.row);p.candidate=null;p.message='';
+  if(p.candidate.q!==v[p.row]||p.candidate.p!==PRICES[p.row]){p.message=`선택한 위치는 ${fmt(p.candidate.p)}원·${p.candidate.q}개입니다. 표의 ${fmt(PRICES[p.row])}원·${v[p.row]}개와 비교해 다시 선택하세요.`;render();$('pointErrorMessage').textContent=p.message;if(!$('pointErrorDialog').open)$('pointErrorDialog').showModal();return;}
+  if(!p.points.includes(p.row)){p.points.push(p.row);pendingPointMotion={session:state.session,scene:currentScene(),row:p.row,kind:plotKind(),q:v[p.row],p:PRICES[p.row],maxQ:state.session===0&&plotKind()==='d'?demandAxisMax():28};}p.candidate=null;p.message='';
  }else if(name==='nextPlotRow'){const p=currentPlot(),vals=plotValues(),known=vals.map((v,i)=>v!==null&&!p.points.includes(i)?i:null).filter(v=>v!==null);p.row=known.find(i=>i>p.row)??known[0]??p.row;p.candidate=null;p.hint=0;p.message='';}
  else if(name==='connect'){const p=currentPlot();if(p.points.length>=2){p.line=true;p.candidate=null;p.hint=0;p.message='';}}
  else if(name==='showNewTable')currentPlot().table=true;
  else if(name==='compareOld')currentPlot().compare=true;
- else if(name==='marketReveal')currentMarket().level=Math.min(3,currentMarket().level+1);
- else if(name==='marketStep'){const m=currentMarket(),at=marketAt(m.price);if(at.gap)marketPriceChange(m,m.price+(at.qd>at.qs?500:-500));}
- else if(name==='marketUp'||name==='marketDown'){const m=currentMarket(),p=Math.max(1000,Math.min(5000,m.price+(name==='marketUp'?500:-500)));if(p!==m.price)marketPriceChange(m,p);}
+ else if(name==='marketStep'){closeMarketDialogs();const m=currentMarket(),data=lessonMarket();if(data){const p=lessonMarketStep(m.price,data);if(p!==lessonMarketAt(m.price,data).p)marketPriceChange(m,p);}}
  else if(name==='startLow'||name==='startHigh'){state.market[currentScene()]=freshMarket(name==='startLow'?1000:5000);}
  else if(name==='distPrice'||name==='distFactor')state.distinguish={mode:name==='distPrice'?'price':'factor',level:0,explain:false};
  else if(name==='distReveal'){pendingDemandMotion=state.distinguish.mode==='price'&&state.distinguish.level===0;forceDemandMotion=pendingDemandMotion;state.distinguish.level=Math.min(2,state.distinguish.level+1);state.distinguish.explain=false;}
@@ -406,34 +672,73 @@ function act(name){
  else if(name==='newUp'||name==='newDown'){const m=state.newMarket,p=Math.max(1000,Math.min(5000,m.price+(name==='newUp'?500:-500)));if(p!==m.price){m.history.push({price:m.price,level:0});m.price=p;m.stage=1;m.compared=false;m.explain=false;}}
  else if(name==='newCompare')state.newMarket.compared=true;
  else if(name==='summaryReveal')state.summary.shown=true;
- render();announce($('stage').querySelector('.feedback').textContent);
+ render();if(name==='selectCoordinate')$('actionBtn').focus({preventScroll:true});announce(name==='recordResponse'?sv.message:($('stage').querySelector('.feedback').textContent||$('actionStatus').textContent||$('actionBtn').textContent));
 }
 document.addEventListener('click',e=>{
+ const scenario=e.target.closest('[data-shift-scenario]');
+ if(scenario){const key=scenario.dataset.shiftScenario,sc=scenarios[key];if(!isPlot()||state.session!==2||!sc||sc.kind!==plotKind())return;if(currentPlot().scenario!==key)shiftReset(sc.kind,key);if($('scenarioDialog').open)$('scenarioDialog').close();render();return;}
  const session=e.target.closest('[data-session]'),scene=e.target.closest('[data-scene]'),action=e.target.closest('[data-act]'),row=e.target.closest('[data-row]'),prediction=e.target.closest('[data-predict]'),summary=e.target.closest('[data-summary-scenario]');
  if(session){navigateSession(Number(session.dataset.session));return;}if(scene){navigateScene(Number(scene.dataset.scene));return;}if(action&&!action.disabled){act(action.dataset.act);return;}
- if(row){const i=Number(row.dataset.row);if(isPlot()){const p=currentPlot();p.row=i;p.candidate=null;p.hint=0;p.message='';p.explain=false;}else if(state.session===0&&currentScene()===0){state.survey.row=i;state.survey.message='';}else if(state.session===0)state.supplyRow=i;render();return;}
- if(prediction){const type=prediction.dataset.predict,v=prediction.dataset.value;if(type==='market')currentMarket().prediction=v;else state.newMarket[type==='newP'?'predP':'predQ']=v;render();return;}
+ if(row){const i=Number(row.dataset.row);if(isPlot()){const p=currentPlot();p.row=i;p.candidate=null;p.hint=0;p.message='';p.explain=false;}else if(isSurvey()){if(state.survey.mode==='class'){openSurvey(i);return;}state.survey.row=i;state.survey.message='';}else if(state.session===0)state.supplyRow=i;render();if(row.tagName==='BUTTON')$('stage').querySelector(`button[data-row="${i}"]`)?.focus({preventScroll:true});return;}
+ if(prediction){const type=prediction.dataset.predict,v=prediction.dataset.value;if(type==='market'){currentMarket().prediction=v;currentMarket().level=2;closeMarketDialogs();}else state.newMarket[type==='newP'?'predP':'predQ']=v;render();return;}
  if(summary){newReset(summary.dataset.summaryScenario);navigateScene(0);}
 });
 document.addEventListener('change',e=>{
- if(e.target.id==='classSize'){const sv=state.survey,n=Number(e.target.value);if(!Number.isInteger(n)||n<5||n>60||sv.values.some(v=>v!==null&&v>n)){e.target.setCustomValidity('인원은 5~60명이며 이미 기록한 응답 이상이어야 합니다.');e.target.reportValidity();return;}sv.size=n;state.dplot=freshPlot();render();}
- if(e.target.id==='shiftScenario'){shiftReset(plotKind(),e.target.value);render();}
+ if(e.target.id==='marketPriceSlider'){finishMarketPriceDrag();return;}
+ if(e.target.id==='classSize'&&updateSurveySize())save();
  if(e.target.id==='newScenario'){newReset(e.target.value);render();}
 });
-document.addEventListener('input',e=>{if(e.target.id==='responseCount'||e.target.id==='classSize')e.target.setCustomValidity('');});
+document.addEventListener('input',e=>{if(e.target.id==='marketPriceSlider'){previewMarketPrice(e.target.value);return;}if(e.target.id==='responseCount'||e.target.id==='classSize')e.target.setCustomValidity('');if(e.target.id==='responseCount')surveyDrafts.set(state.survey.row,e.target.value);if(e.target.id==='classSize'&&updateSurveySize(false))save();});
+for(const event of ['focusout','pointercancel'])document.addEventListener(event,e=>{if(e.target.id==='marketPriceSlider')finishMarketPriceDrag();});
+$('surveyForm').onsubmit=e=>{
+ e.preventDefault();if(!recordSurveyResponse())return;
+ const last=state.survey.row===PRICES.length-1,message=state.survey.message;
+ if(!last)state.survey.row++;
+ render();announce(message);
+ if(last){$('surveyDialog').close();$('actionBtn').focus({preventScroll:true});}
+ else{updateSurveyDialog(true);$('responseCount').focus();$('responseCount').select();}
+};
+$('surveyPrevBtn').onclick=()=>{if(state.survey.row>0){state.survey.row--;render();updateSurveyDialog();$('responseCount').focus();$('responseCount').select();}};
+$('closeSurveyBtn').onclick=()=>$('surveyDialog').close();
+$('surveyDialog').onclose=()=>{$('actionBtn').focus({preventScroll:true});};
+$('closePointErrorBtn').onclick=()=>$('pointErrorDialog').close();
+$('pointErrorDialog').onclose=()=>{($('plotSvg')||$('actionBtn')).focus({preventScroll:true});};
 $('actionBtn').onclick=()=>{if(currentView&&!currentView.disabled)act(currentView.action);};
-$('prevBtn').onclick=()=>navigateScene(currentScene()-1);
-$('nextBtn').onclick=()=>{if(currentScene()<scenes[state.session].length-1)navigateScene(currentScene()+1);else{const questions=[['표의 한 행과 점 하나는 어떤 관계인가요?','가로축은 수량인데, 가격을 올리면 점이 왜 왼쪽 위에 찍힐 수 있나요?','수요량과 공급량은 실제로 거래된 수량과 같을까요?'],['초과 수요와 초과 공급은 같은 가격에서 무엇을 비교한 것인가요?','가격이 조정될 때 두 곡선 자체가 바뀌나요?','시장 균형에서 같아지는 두 수량은 무엇인가요?'],['같은 가격에서 수량이 달라진 이유는 무엇인가요?','새 곡선을 그리고 이전 곡선과 비교하면 무엇이 보이나요?','상품 가격의 변화와 가격 이외 요인의 변화는 어떻게 구별하나요?'],['이전 균형 가격에서 왜 초과 수요 또는 초과 공급이 생겼나요?','그 불일치가 가격을 어느 방향으로 움직이게 하나요?','다른 곡선이 일정할 때 새 균형 가격과 거래량은 어떻게 달라졌나요?']][state.session];$('endTitle').textContent=`${state.session+1}차시 · 그래프를 말로 설명해 봅시다`;$('endQuestions').innerHTML='<ul>'+questions.map(q=>'<li>'+q+'</li>').join('')+'</ul>';$('endDialog').showModal();}};
+$('prevBtn').onclick=previousScene;
+$('nextBtn').onclick=nextScene;
 $('undoBtn').onclick=undo;
+$('closeMarketPredictionBtn').onclick=()=>closeMarketDialogs();
+$('closeMarketResultBtn').onclick=()=>closeMarketDialogs();
+for(const id of ['marketPredictionDialog','marketResultDialog'])$(id).onclose=()=>{if(!['marketPredictionDialog','marketResultDialog'].some(other=>$(other).open)){$('actionBtn').focus({preventScroll:true});marketDialogContext=null;}};
 $('explainBtn').onclick=()=>{const e=explanationFlag();if(e){e.explain=!e.explain;render();}else{const f=$('stage').querySelector('.feedback');f.innerHTML='<span>'+currentView.explanation+'</span>';$('explainBtn').setAttribute('aria-pressed','true');}};
 $('guideBtn').onclick=()=>{$('storageStatus').textContent=storageOK?'진행 상태를 이 브라우저에 저장하고 있습니다.':'브라우저 저장이 제한되어 있습니다. 기록 내려받기로 보관하세요.';$('guideDialog').showModal();};
+$('closeScenarioBtn').onclick=()=>$('scenarioDialog').close();
 $('closeGuideBtn').onclick=()=>$('guideDialog').close();$('closeEndBtn').onclick=()=>$('endDialog').close();
-$('resetBtn').onclick=()=>$('confirmDialog').showModal();$('cancelResetBtn').onclick=()=>$('confirmDialog').close();$('confirmResetBtn').onclick=()=>{state=fresh();save();$('confirmDialog').close();$('guideDialog').close();render(true);};
+$('resetBtn').onclick=()=>$('confirmDialog').showModal();$('cancelResetBtn').onclick=()=>$('confirmDialog').close();$('confirmResetBtn').onclick=()=>{state=fresh();surveyDrafts.clear();save();$('confirmDialog').close();$('guideDialog').close();render(true);};
 $('fullscreenBtn').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{announce('브라우저 메뉴의 전체화면 기능을 사용해 주세요.');}};document.addEventListener('fullscreenchange',()=>{$('fullscreenBtn').textContent=document.fullscreenElement?'전체화면 종료':'전체화면';});
-$('exportBtn').onclick=()=>{save();const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='경제그래프-수업기록.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);$('storageStatus').textContent='현재 네 차시의 기록을 파일로 내려받았습니다.';};
+$('exportBtn').onclick=()=>{save();const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='경제그래프-수업기록.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);$('storageStatus').textContent='현재 활동의 기록을 파일로 내려받았습니다.';};
 $('importBtn').onclick=()=>$('importFile').click();
-$('importFile').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>1000000)throw Error('size');const parsed=JSON.parse(await file.text());if(!validState(parsed))throw Error('shape');state=parsed;save();render();$('storageStatus').textContent='기록을 불러왔습니다. 수업으로 돌아가면 저장한 장면이 열립니다.';}catch{$('storageStatus').textContent='이 자료에서 내려받은 올바른 수업 기록 파일을 선택해 주세요. 현재 기록은 유지됩니다.';}e.target.value='';};
-document.addEventListener('keydown',e=>{if(document.querySelector('dialog[open]')||e.target.closest('input,textarea,select,[contenteditable="true"],svg[role="button"]')||e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowLeft'&&currentScene()>0){e.preventDefault();navigateScene(currentScene()-1);}if(e.key==='ArrowRight'&&currentScene()<scenes[state.session].length-1){e.preventDefault();navigateScene(currentScene()+1);}});
+$('importFile').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>1000000)throw Error('size');const parsed=JSON.parse(await file.text());if(!validState(parsed))throw Error('shape');state=parsed;surveyDrafts.clear();save();render();$('storageStatus').textContent='기록을 불러왔습니다. 수업으로 돌아가면 저장한 장면이 열립니다.';}catch{$('storageStatus').textContent='이 자료에서 내려받은 올바른 수업 기록 파일을 선택해 주세요. 현재 기록은 유지됩니다.';}e.target.value='';};
+
+function syncStoredState(value){
+ try{
+  const incoming=JSON.parse(value);if(!validState(incoming))return false;
+  const session=state.session,scene=state.scene.slice(),row=state.survey.row,open=$('surveyDialog').open,increased=$('surveyPriceEnding').textContent==='으로 올랐습니다.';
+  state=incoming;state.session=session;state.scene=scene;
+  if(open)state.survey.row=row;
+  render(false,false);
+  if(open){if(state.survey.mode==='class')updateSurveyDialog(increased);else $('surveyDialog').close();}
+  announce('다른 창에서 변경한 기록을 반영했습니다.');return true;
+ }catch{return false;}
+}
+if(typeof window!=='undefined')window.addEventListener('storage',e=>{if(e.key===KEY&&e.newValue)syncStoredState(e.newValue);});
+
+document.addEventListener('keydown',e=>{if(state.session===1||document.querySelector('dialog[open]')||e.target.closest('input,textarea,select,button,[contenteditable="true"],svg[role="button"]')||e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowLeft'&&(currentActivity()>0||currentScene()>0)){e.preventDefault();previousScene();}if(e.key==='ArrowRight'&&(state.session===0||currentScene()<3)){e.preventDefault();nextScene();}});
+document.addEventListener('keydown',e=>{
+ const row=e.target.closest('button[data-row]');if(!row||!isPlot()||!['ArrowUp','ArrowDown','Home','End'].includes(e.key))return;
+ e.preventDefault();const i=Number(row.dataset.row),next=e.key==='Home'?0:e.key==='End'?4:Math.max(0,Math.min(4,i+(e.key==='ArrowDown'?1:-1)));
+ const button=$('stage').querySelector(`button[data-row="${next}"]`);button?.click();$('stage').querySelector(`button[data-row="${next}"]`)?.focus({preventScroll:true});
+});
 render();
 </script>
 </body>
