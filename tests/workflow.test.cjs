@@ -43,8 +43,8 @@ for (const scenario of ['dplus','dminus','splus','sminus']) {
     assert.equal(element('actionBtn').focused,true);
     run('act("confirmPoint");');
     truth(`currentPlot().points.length===${row+1} && currentPlot().candidate===null`);
-    truth('!view().body.includes("plotSvg")');
-    if (row < 4) truth('view().action === "nextPlotRow"');
+    if (row < 4) truth(`view().action === "selectCoordinate" && currentPlot().row===${row+1} && view().body.includes("plotSvg")`);
+    else truth('!view().body.includes("plotSvg")');
   }
   truth('view().action === "connect" && plotProgress().step === 2 && !currentPlot().line');
   run('act("connect");');
@@ -131,8 +131,7 @@ console.log('PASS: three activity navigation, cross-activity next/previous, comp
 run('state=fresh();state.survey.values=[2,24,12,1,2];');
 truth('view().action==="advanceScene" && view().label==="수요 점 찍기 →"');
 run('state=fresh();state.scene[0]=1;');truth('view().action==="startSurvey" && !view().disabled');
-run('state.survey.values=[null,4,2,null,null];');truth('view().action==="nextPlotRow" && !view().disabled');
-run('act("nextPlotRow");');truth('currentPlot().row===1');
+run('state.survey.values=[null,4,2,null,null];');truth('view().action==="selectCoordinate" && !view().disabled && currentPlot().row===1');
 // Old guide flags remain importable but no controls or saved guide lines are shown.
 run('state=fresh();state.survey.values=[2,24,12,1,2];state.scene[0]=1;');
 for(const hint of [1,2,3]) {
@@ -309,3 +308,83 @@ run('act("showEquilibria");');truth('$("marketResultContent").innerHTML.includes
 run('currentMarket().compared=false;currentMarket().level=1;currentMarket().history=[{price:2227.9,level:2,prediction:"up",compared:false}];undo();');
 truth('currentMarket().price===2000 && currentMarket().level===1 && currentMarket().prediction===null && validState(state)');
 console.log('PASS: coarse price selection preserves both off-grid intersections and rejects stale predictions when restoring old fractional history');
+
+// The footer button alone carries demand and supply plotting into the next activity.
+const pressPrimary = () => {
+  truth('!view().disabled');
+  run('currentView=view();$("actionBtn").onclick();');
+};
+run('state=fresh();state.survey.values=[20,16,12,8,4];state.scene[0]=1;');
+for (const scene of [1,3]) {
+  run(`state.scene[0]=${scene};`);
+  for (let row=0;row<5;row++) {
+    truth(`currentPlot().row===${row} && view().action==="selectCoordinate"`);
+    truth('!view().body.includes("coordinate-alternative") && !view().body.includes("data-act="+String.fromCharCode(34)+"selectCoordinate")');
+    pressPrimary();
+    truth(`currentPlot().candidate.q===plotValues()[${row}] && currentPlot().candidate.p===PRICES[${row}] && view().action==="confirmPoint"`);
+    pressPrimary();
+    truth(`currentPlot().points.length===${row+1} && currentPlot().candidate===null`);
+    if (row<4) truth(`view().action==="selectCoordinate" && currentPlot().row===${row+1}`);
+  }
+  truth('view().action==="connect" && view().label==="점 연결하기 →" && !currentPlot().line'); pressPrimary();
+  truth('currentPlot().line && view().action==="advanceScene"'); pressPrimary();
+  truth(scene===1?'currentActivity()===1 && currentScene()===2':'currentActivity()===2 && state.session===1');
+}
+// Partial responses skip missing prices and keep zero quantities on the main path.
+run('state=fresh();state.survey.values=[null,0,null,7,null];state.scene[0]=1;');
+truth('view().action==="selectCoordinate"');
+truth('currentPlot().row===1'); pressPrimary();
+truth('currentPlot().candidate.q===0 && currentPlot().candidate.p===2000');
+run('undo();'); truth('view().action==="selectCoordinate" && !view().disabled');
+pressPrimary(); pressPrimary();
+truth('currentPlot().row===3'); pressPrimary(); pressPrimary();
+truth('view().action==="connect"'); pressPrimary();
+truth('currentPlot().line && validState(state)');
+console.log('PASS: footer-only demand/supply plotting, point preview and confirmation, next-activity handoff, partial responses, zero quantities and undo');
+
+// A saved lesson paused after confirmation skips the old next-price step on resume.
+run('state=fresh();state.scene[0]=3;state.splot.points=[0,1,2];state.splot.row=2;pendingPointMotion=null;');
+truth('view().action==="selectCoordinate" && currentPlot().row===3 && !currentPlot().line');
+pressPrimary(); pressPrimary();
+truth('currentPlot().row===4 && pendingPointMotion.row===3 && view().body.includes("pointMotionFinal") && view().body.includes("pointMotionDot")');
+pressPrimary(); pressPrimary();
+truth('view().action==="connect" && !currentPlot().line && plotProgress().step===1');
+console.log('PASS: automatic next-price selection, resumed lessons, animation keeps the confirmed point and line connection remains explicit');
+
+// Concepts appear with the graph even before plotting is complete.
+run('state=fresh();state.session=1;');
+truth('view().body.includes("marketConceptPanel") && view().body.includes("시장 가격과 균형") && view().action==="resumeDemand"');
+assert.ok(!html.includes('id="marketConceptDialog"'));
+
+// Only the current market condition is explained, using the lesson's own data.
+run('state=fresh();state.session=1;state.survey.values=DEMAND.slice();state.dplot={...freshPlot(),points:[0,1,2,3,4],line:true};state.splot={...freshPlot(),points:[0,1,2,3,4],line:true};prepareLessonMarket();state.scene[1]=0;');
+for(const [price,kind,reason] of [[1000,'초과 수요','수요자들 간의 경쟁'],[5000,'초과 공급','공급자들 간의 경쟁'],[3000,'시장 균형','균형 거래량']]) {
+  run(`currentMarket().price=${price};`);
+  const beforeConcept=run('JSON.stringify(state)');
+  const body=run('view().body');
+  assert.equal(run('JSON.stringify(state)'),beforeConcept);
+  assert.ok(body.includes(kind) && body.includes(reason));
+  if(price!==3000) {
+    assert.ok(body.includes(`${price.toLocaleString('ko-KR')}원에서`) && body.includes('16개'));
+    assert.ok(!body.includes(price===1000?'공급자들 간의 경쟁':'수요자들 간의 경쟁'));
+  } else for(const term of ['균형 가격','균형 거래량','세로축','가로축','3,000','12개']) assert.ok(body.includes(term));
+  run('act("marketOutcome");');
+  truth('view().body.includes("marketConceptPanel")');
+  run('closeMarketDialogs();');
+}
+// Dragging updates concepts in place without replacing the slider or advancing the lesson.
+run('previewMarketPrice(2000);');
+truth('$("marketConceptPanel").innerHTML.includes("2,000원에서") && $("marketConceptPanel").innerHTML.includes("8개") && currentMarket().level===1');
+assert.equal(element('marketDemandValue').textContent,'16개');
+assert.equal(element('marketSupplyValue').textContent,'8개');
+run('previewMarketPrice(5000);finishMarketPriceDrag();');
+truth('$("marketConceptPanel").innerHTML.includes("초과 공급") && $("marketConceptPanel").innerHTML.includes("공급자들 간의 경쟁")');
+run('undo();');
+truth('currentMarket().price===3000 && view().body.includes("균형 거래량") && validState(state)');
+run('currentMarket().price=1000;act("showEquilibria");');
+truth('view().body.includes("균형 가격") && view().body.includes("균형 거래량") && view().body.includes("3,000")');
+run('closeMarketDialogs();state.survey.values=[0,0,0,0,0];');
+truth('view().body.includes("기록한 가격 범위에는 두 곡선이 만나는 지점이 없습니다")');
+run('state.survey.values=[2,24,12,1,2];');
+truth('view().body.includes("1,111.1") && view().body.includes("3,000")');
+console.log('PASS: contextual concepts beside the graph, actual quantities, live price changes, undo, equilibrium definitions and multiple/no intersections');
